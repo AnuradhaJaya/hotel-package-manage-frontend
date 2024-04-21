@@ -1,38 +1,20 @@
-.App {
-  text-align: center;
+.customShadow{
+  box-shadow: 1px 0px 10px rgba(48, 48, 48, 0.2);
 }
+/**userTable*/
+.userTable{
+  @apply bg-slate-50 
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
+.userTable thead{
+  @apply bg-black
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
+.userTable th{
+  @apply border  font-semibold text-white text-center text-sm
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
+.userTable td{
+  @apply border  font-light text-black text-balance pl-4 text-xs
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
