@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import fetchCategoryWisePackage from "../helpers/fetchCategoryWisePackage";
 import { Link } from "react-router-dom";
+import STATUS from "../common/status";
 
 const PackageCard = ({ category }) => {
   const [data, setData] = useState([]);
@@ -119,6 +120,7 @@ const PackageCard = ({ category }) => {
                     );
                   })
                 : data.map((pack, index) => {
+                  if (pack?.status === STATUS.Active) {
                     const isEvenIndex = index % 2 === 0;
                     return (
                       <div key={index}>
@@ -227,14 +229,15 @@ const PackageCard = ({ category }) => {
                           </div>
                         )}
                       </div>
-                    );
+                    )
+                  }
                   })}
 
               {/* single blog post */}
               {/* End of single blog post */}
 
               {/* blog pagination */}
-              <div className="blog-pagination-wrap">
+              {/* <div className="blog-pagination-wrap">
                 <ul className="pagination blog-pagination list-unstyled">
                   <li className="disabled">
                     <a href="#">
@@ -259,7 +262,7 @@ const PackageCard = ({ category }) => {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
               {/* End of blog pagination */}
             </div>
           </div>

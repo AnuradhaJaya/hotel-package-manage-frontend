@@ -46,12 +46,11 @@ const AllPackages = () => {
                     <table className="shop_table shop_table_responsive cart woocommerce-cart-form__contents">
                       <tbody>
                         <tr>
-                          <td className="product-name w-[200px]">   </td>
-                          <td className="product-name w-80">Package Name</td>
-                          <td className="product-name w-5">Category</td>
-                          <td className="product-quantity w-10">Price/Rs:</td>
-                          <td className="product-quantity w-5">Discount</td>
-                          <td className="product-quantity w-5">Status</td>
+                          <td className="">Package Name</td>
+                          <td className="">Category</td>
+                          <td className="">Price/Rs:</td>
+                          <td className="">Discount</td>
+                          <td className="">Status</td>
                         </tr>
                       </tbody>
                     </table>

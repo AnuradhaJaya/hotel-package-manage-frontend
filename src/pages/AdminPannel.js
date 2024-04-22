@@ -3,6 +3,7 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import ROLE from "../common/role";
+//import AdminBar from "../components/AdminBar"
 
 const AdminPannel = () => {
   const user = useSelector((state) => state?.user?.user);
@@ -13,8 +14,8 @@ const AdminPannel = () => {
     }
   }, [user]);
   return (
-    <div className="min-h-[calc(53.5vh-120px)] pt-10  md:flex hidden">
-      <aside className="bg-white pt-16  min-h-full w-full max-w-60 ">
+    <div className="min-h-[calc(53.5vh-120px)] pt-3  md:flex hidden">
+       <aside className="bg-white pt-14  min-h-full w-full max-w-60 ">
         <div className="h-32 bg-white  flex justify-center items-center flex-col">
           <div
             className="text-6xl text-black cursor-pointer  flex justify-center "
@@ -43,21 +44,22 @@ const AdminPannel = () => {
           </div>
 
         </div>
-        <div className="grid pt-5 mt-60">
+        <div className="grid pt-7 mt-60">
           <Link
             to={"all-users"}
-            className="px-3 py-1 text-black hover:bg-slate-100"
+            className="pl-4 pt-3 text-black hover:bg-slate-100"
           >
             All Users
           </Link>
           <Link
             to={"all-packages"}
-            className="px-3 py-1 text-black hover:bg-slate-100"
+            className="pl-4 pt-3 text-black hover:bg-slate-100"
           >
             All Packages
           </Link>
         </div>
-      </aside>
+      </aside> 
+      
       <main className="h-full w-full">
         <Outlet />
       </main>
