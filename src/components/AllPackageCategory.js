@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import summaryApi from "../common";
 import STATUS from "../common/status";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const AllPackageCategory = () => {
   const [allPackage, setAllPackage] = useState([]);
@@ -24,8 +25,9 @@ const AllPackageCategory = () => {
   return (
     <div>
       {allPackage.map((pack, index) => {
-          const isEvenIndex = index % 2 === 0;
-          if (pack?.status === STATUS.Active) {
+        const isEvenIndex = index % 2 === 0;
+
+        if (pack?.status === STATUS.Active) {
           return (
             <div key={index}>
               {isEvenIndex ? (
@@ -42,7 +44,8 @@ const AllPackageCategory = () => {
                         <div className="post-info">
                           <ul className="list-unstyled mb-0">
                             <li>
-                              {pack.endDate} - {pack.endDate}
+                              {moment(pack?.createAt).format("LL")} -{" "}
+                              {moment(pack?.endDate).format("LL")}
                             </li>
                           </ul>
                         </div>
@@ -96,7 +99,8 @@ const AllPackageCategory = () => {
                         <div className="post-info">
                           <ul className="list-unstyled mb-0">
                             <li>
-                              {pack.endDate} - {pack.endDate}
+                              {moment(pack?.createAt).format("LL")} -{" "}
+                              {moment(pack?.endDate).format("LL")}
                             </li>
                           </ul>
                         </div>
@@ -124,9 +128,111 @@ const AllPackageCategory = () => {
                 </div>
               )}
             </div>
-          );
+          )
+        } else if (pack?.status === STATUS.Deactivate) {
+          return (
+            <div key={index}>
+              {isEvenIndex ? (
+                <div className="single-blog-wrap type3">
+                  <div className="row align-items-center">
+                    <div className="col-md-7">
+                      <div className="single-post-details left-content">
+                        <p>#{pack.category}</p>
+                        <h3>
+                          <Link to={"package-details/" + pack._id}>
+                            {pack.packtName}
+                          </Link>
+                        </h3>
+                        <div className="post-info">
+                          <ul className="list-unstyled mb-0">
+                            <li>
+                              {moment(pack?.createAt).format("LL")} -{" "}
+                              {moment(pack?.endDate).format("LL")}
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="post-body">
+                          <p className="text-ellipsis line-clamp-3">
+                            {pack.title}
+                          </p>
+                          <div className="reading-and-reply d-flex align-items-center justify-content-between">
+                            <Link
+                              to={"package-details/" + pack._id}
+                              className="btn btn-line"
+                            >
+                              View Details...
+                            </Link>
+                            <div className="single-reply-comment">
+                              <a href="#">
+                                <i className="fa fa-comment-o"></i>4
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-5 order-first order-md-last">
+                      <div className="w-[300px] h-[200px] single-blog-image hover-effect">
+                        <Link to={"package-details/" + pack._id}>
+                          <img src={pack.packImage} alt="" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="single-blog-wrap type3">
+                  <div className="row align-items-center">
+                    <div className="col-md-5">
+                      <div className="w-[300px] h-[200px] single-blog-image hover-effect">
+                        <Link to={"package-details/" + pack._id}>
+                          <img src={pack.packImage} alt="" />
+                        </Link>
+                      </div>
+                    </div>
+                    <div className="col-md-7">
+                      <div className="single-post-details right-content">
+                        <p>#{pack.category}</p>
+                        <h3>
+                          <Link to={"package-details/" + pack._id}>
+                            {pack.packtName}
+                          </Link>
+                        </h3>
+                        <div className="post-info">
+                          <ul className="list-unstyled mb-0">
+                            <li>
+                              {moment(pack?.createAt).format("LL")} -{" "}
+                              {moment(pack?.endDate).format("LL")}
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="post-body">
+                          <p className="text-ellipsis line-clamp-3">
+                            {pack.title}
+                          </p>
+                          <div className="reading-and-reply d-flex align-items-center justify-content-between">
+                            <Link
+                              to={"package-details/" + pack._id}
+                              className="btn btn-line"
+                            >
+                              View Details...
+                            </Link>
+                            <div className="single-reply-comment">
+                              <a href="#">
+                                <i className="fa fa-comment-o"></i>4
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )
         } else {
-          return null; // Skip rendering if status is not Active
+          return null // Skip rendering if status is not Active
         }
       })}
     </div>

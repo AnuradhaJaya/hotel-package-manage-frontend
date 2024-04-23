@@ -3,7 +3,6 @@ import Sidebar from "../components/PackageDetailSidebar";
 import { useParams } from "react-router-dom";
 import SummaryApi from "../common";
 import moment from "moment";
-
 const PackageDetails = () => {
   const [data, setData] = useState({
     packtName: "",
@@ -31,7 +30,7 @@ const PackageDetails = () => {
         productId: params?.id,
       }),
     });
-    setLoading(false);
+   setLoading(false);
     const dataReponse = await response.json();
 
     setData(dataReponse?.data);
@@ -61,7 +60,7 @@ const PackageDetails = () => {
                           </ul>
                         </div>
                         <div className="post-heading pt-0">
-                          <h2 className="w-ful p-2 bg-slate-100 animate-pulse"></h2>
+                          <h2 className="w-ful p-4 bg-slate-100 animate-pulse"></h2>
                         </div>
                         <div className="post-main-image ">
                           <div
@@ -92,15 +91,10 @@ const PackageDetails = () => {
                           <h5 className="w-ful p-2 bg-slate-100 animate-pulse"></h5>
 
                           <div className="h-full w-full bg-slate-100 overflow-hidden animate-pulse">
-                            <textarea
+                            <div
                               className="h-[370px] w-full  p-2 bg-slate-100 animate-pulse"
-                              style={{
-                                overflow: "hidden",
-                                resize: "none",
-                                border: "none",
-                              }}
-                              readOnly
-                            />
+                             
+                            ></div>
                           </div>
 
                           <blockquote></blockquote>
@@ -207,7 +201,7 @@ const PackageDetails = () => {
 
                           <div className="h-full w-full overflow-hidden">
                             <textarea
-                              className="h-[370px] w-full"
+                              className="h-[350px] w-full min-h-max"
                               style={{
                                 overflow: "hidden",
                                 resize: "none",
@@ -263,7 +257,6 @@ const PackageDetails = () => {
                                       <i className="fa fa-linkedin"></i>
                                     </a>
                                   </li>
-
                                 </ul>
                               </div>
                               {/* End of single blog share on */}

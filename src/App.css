@@ -18,3 +18,7 @@
   @apply border  font-light text-black text-balance pl-4 text-xs
 
 }
+.main-content {
+  padding-top: 5rem;
+  padding-left: 1rem;
+}

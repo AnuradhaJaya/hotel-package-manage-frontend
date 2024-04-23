@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CategoryList from "./CategoryList";
 import { IoSearch } from "react-icons/io5";
-import { useLocation, useNavigate } from "react-router-dom";
-
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import SummaryApi from "../common";
+import STATUS from "../common/status";
 const PackageSidebar = () => {
   const navigate = useNavigate();
   const searchInput = useLocation();
@@ -23,6 +24,28 @@ const PackageSidebar = () => {
   const handleInputChange = (event) => {
     setSearch(event.target.value);
   };
+
+  //Display Popular Packages
+  const [allPackage, setAllPackage] = useState([]);
+  const fetchAllPackage = async () => {
+    try {
+      const response = await fetch(SummaryApi.allPackage.url);
+      const dataResponse = await response.json();
+      console.log("package data", dataResponse);
+      setAllPackage(dataResponse?.data || []);
+    } catch (error) {
+      console.error("Error fetching all packages:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllPackage();
+  }, []);
+
+  // Filter active packages and get first two
+  const popularPackages = allPackage
+    .filter((pack) => pack?.status === STATUS.Active)
+    .slice(0, 3);
 
   return (
     <div className="col-lg-3">
@@ -50,59 +73,32 @@ const PackageSidebar = () => {
         <div className="single-sidebar-widget mb-60">
           {/* widget title */}
           <div className="widget-title">
-            <h4>Popular Posts</h4>
+            <h4>Popular Packages</h4>
           </div>
           {/* End of widget title */}
+
           <div className="popular-post">
-            <ul className="list-unstyled mb-0">
-              {/* single popular post */}
-              <li>
-                <h5>
-                  <a href="#">
-                    No one rejects, dislikes, or avoids pleasure itself
-                  </a>
-                </h5>
-                <p>
-                  by. <a href="#">Puchka Bolle</a>
-                </p>
-              </li>
-              {/* End of single popular post */}
-
-              {/* single popular post */}
-              <li>
-                <h5>
-                  <a href="#">
-                    Nor again is there anyone who does loves or pursues desires.
-                  </a>
-                </h5>
-                <p>
-                  by. <a href="#">Puchka Bolle</a>
-                </p>
-              </li>
-              {/* End of single popular post */}
-
-              {/* single popular post */}
-              <li>
-                <h5>
-                  <a href="#">who are beguiled and demoralizedlf</a>
-                </h5>
-                <p>
-                  by. <a href="#">Puchka Bolle</a>
-                </p>
-              </li>
-              {/* End of single popular post */}
-
-              {/* single popular post */}
-              <li>
-                <h5>
-                  <a href="#">The pain trouble bound to ensue</a>
-                </h5>
-                <p>
-                  by. <a href="#">Puchka Bolle</a>
-                </p>
-              </li>
-              {/* End of single popular post */}
-            </ul>
+            {popularPackages.map((pack, index) => {
+              if (pack?.status === STATUS.Active) {
+                return (
+                  <ul className="list-unstyled mb-0" key={index}>
+                    {/* single popular post */}
+                    <Link to={"package-details/" + pack._id}>
+                      <li>
+                        <h5 className="text-ellipsis line-clamp-3">
+                          <a href=" ">{pack?.description}</a>
+                        </h5>
+                        <p className="text-black capitalize  hover:text-slate-600">
+                          by.{pack?.packtName}
+                        </p>
+                      </li>
+                    </Link>
+                    {/* End of single popular post */}
+                  </ul>
+                );
+              }
+              return null; // or any other fallback if needed
+            })}
           </div>
         </div>
         {/* End of Single sidebar widget */}
@@ -151,10 +147,10 @@ const PackageSidebar = () => {
         <div className="single-sidebar-widget mb-60">
           {/* widget title */}
           <div className="widget-title">
-            <h4>Stay Tuned</h4>
+            <h4>ElephantBay INSIDER</h4>
           </div>
           {/* End of widget title */}
-          <p>will give you a complete account of the system of the truth.</p>
+          <p>JOIN Elephantbay INSIDER AND SAVE 30%.</p>
           <div className="stay-form sidebar-stay-form parsley-validate">
             <form action="#" method="post">
               <input

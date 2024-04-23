@@ -7,7 +7,7 @@ import PackageSidebar from "../components/PackageSidebar";
 const Home = () => {
   return (
     <div>
-      <section className="page-title-inner" data-bg-img={bg}>
+      <section className="page-title-inner py-6" data-bg-img={bg}>
         <div className="container">
           <div className="row">
             <div className="col-12">
