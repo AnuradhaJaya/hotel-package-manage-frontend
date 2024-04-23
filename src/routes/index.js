@@ -11,6 +11,7 @@ import CategoryPackages from "../pages/CategoryPackage";
 import PackageDetails from "../pages/PackageDetails";
 import PackageCategoryDetails from "../pages/PackageCategoryDetails";
 import SearchPackage from "../pages/SearchPackage";
+import Booking from "../pages/Booking";
 
 
 const router = createBrowserRouter([
@@ -46,6 +47,9 @@ const router = createBrowserRouter([
         },{
           path: "search",
           element:<SearchPackage/>
+        },{
+          path : "booking/:id",
+          element:<Booking/>
         },
         {
           path: "admin-panel",

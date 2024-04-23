@@ -17,7 +17,7 @@ const Footer = () => {
                                 </Link>
                             </div>
                             <div className="footer-about-text">
-                                <p>Be the first to know New developments at the Hotel ElephantBay !</p>
+                                <p>Be the first to know New developments at the Hotel ElephantBay!</p>
                             </div>
                             <div className="footer-subscribe parsley-validate">
                                 <form action=" ">

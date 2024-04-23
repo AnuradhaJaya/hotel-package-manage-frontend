@@ -85,7 +85,7 @@ const Signup = () => {
   console.log("data login",data)
   return (
         <div>
-            <section className="page-title-inner" data-bg-img='assets/img/page-titlebg.png'>
+            <section className="page-title-inner pt-6">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">

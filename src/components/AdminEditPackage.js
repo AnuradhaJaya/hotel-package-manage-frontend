@@ -13,7 +13,7 @@ const AdminEditPackage = ({
     packageData,
     fetchData
 }) => {
-    const [data,setData] = useState({
+    const [data,setData] = useState({ 
         ...packageData,
         packtName : packageData?.packtName,
         title : packageData?.title,
@@ -98,7 +98,7 @@ const AdminEditPackage = ({
       
         }
       return (
-        <div className='fixed top-0 bottom-0 left-0 right-0 w-full h-full z-10 flex justify-center items-center bg-slate-200 bg-opacity-50'>
+        <div className='fixed top-0 bottom-0 left-0 right-0 w-full h-full z-10 flex justify-center items-center bg-slate-200 bg-opacity-30'>
           <div className='bg-white p-3 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden'>
             <div className='flex justify-between items-center pb-3'>
               <h2 className='font-bold text-lg'>Edit Package</h2>

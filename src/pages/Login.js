@@ -62,7 +62,7 @@ const Login = () => {
 
     return (
         <div>
-            <section className="page-title-inner" >
+            <section className="page-title-inner pt-6" >
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
