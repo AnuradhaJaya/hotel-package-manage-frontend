@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import sale from "../assets/img/blog/sidebar-add.jpg";
 import CategoryList from "./CategoryList";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SummaryApi from "../common";
 import displayLKRCurrency from "../helpers/displayCurrency";
-
 const PackageDetailsSidebar = (packageID) => {
   const [data, setData] = useState({
     packtName: "",
@@ -54,14 +53,13 @@ const PackageDetailsSidebar = (packageID) => {
               <div className="text-lg pb-3 text-white text-ellipsis line-clamp-7">
                 {data.title}
               </div>
-              <div className="hover:text-black transform-none">
+              <div className="text-slate-300 hover:text-green-400 transform-none">
                 {displayLKRCurrency(data.price)}
               </div>
 
-              <a href=" " className="btn btn-line">
-                {" "}
-                Booking Now
-              </a>
+              <div className="btn btn-line">
+                <Link to={"/booking/" + data._id}>Booking Now</Link>
+              </div>
             </div>
           </div>
         </div>
@@ -118,9 +116,9 @@ const PackageDetailsSidebar = (packageID) => {
             <h4>Stay Tuned</h4>
           </div>
           {/* End of widget title */}
-          <p>will give you a complete account of the system of the truth.</p>
+          <p>JOIN Elephantbay INSIDER AND SAVE 30%.</p>
           <div className="stay-form sidebar-stay-form parsley-validate">
-            <form action="#" method="post">
+            <form>
               <input
                 type="Email"
                 placeholder="Your Email Here"
