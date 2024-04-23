@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className='pt-96'> 
+        <div className='pt-0'> 
         <footer className="footer-type4">
             <div className="footer-top">
                 <div className="container">
@@ -17,10 +17,10 @@ const Footer = () => {
                                 </Link>
                             </div>
                             <div className="footer-about-text">
-                                <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammeled and when nothing prevents our being able to do what we like best.</p>
+                                <p>Be the first to know New developments at the Hotel ElephantBay !</p>
                             </div>
                             <div className="footer-subscribe parsley-validate">
-                                <form action=" " method="post" className="footer-form" noValidate>
+                                <form action=" ">
                                     <input type="email" className="theme-input-style" placeholder="your email here" required />
                                     <button type="submit"><i className="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                                 </form>
@@ -31,7 +31,7 @@ const Footer = () => {
                         {/* footer widget */}
                         <div className="footer-widget">
                             <div className="footer-header">
-                                <h5>About kinen</h5>
+                                <h5>About Elephantbay</h5>
                             </div>
                             <div className="footer-links">
                                 <ul className="links-list">
@@ -51,10 +51,10 @@ const Footer = () => {
                             </div>
                             <div className="footer-links">
                                 <ul className="links-list">
-                                    <li><Link to=" ">Top Sellers</Link></li>
-                                    <li><Link to=" ">Featured Items</Link></li>
-                                    <li><Link to=" ">Discount Shop</Link></li>
-                                    <li><Link to=" ">New Arrivals</Link></li>
+                                    <li><Link to=" ">Rooms</Link></li>
+                                    <li><Link to=" ">Offers</Link></li>
+                                    <li><Link to=" ">Events</Link></li>
+                                    <li><Link to=" ">Location</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -69,29 +69,27 @@ const Footer = () => {
                                 <ul className="footer-contact-list">
                                     <li>
                                         <span><i className="fa fa-map-marker" aria-hidden="true"></i></span>
-                                        1622 Colins Street West, Strawberry (Le), ITALY
+                                        Pinnawala,, Pinnawala, 71100
                                     </li>
                                     <li>
                                         <span><i className="fa fa-envelope" aria-hidden="true"></i></span>
-                                        <a href="mailto:info@emailname.com">Email: info@emailname.com</a>
+                                        <a href="mailto:info@emailname.com">Email: hotelelephantbay@gmail.com</a>
                                     </li>
                                     <li>
                                         <span><i className="fa fa-phone" aria-hidden="true"></i></span>
-                                        <a href="tel:+006543219874">Phone: +00 654 321 9874</a>
+                                        <a href="tel:+006543219874">Phone: +94 352 266 731</a>
                                     </li>
                                     <li>
                                         <span><i className="fa fa-clock-o" aria-hidden="true"></i></span>
-                                        Monday - Saturday: 9:00 - 18:00 pm
+                                        <div className='font-bold'>Monday - Saturday:</div>9:00 am - 18:00 pm
                                     </li>
                                 </ul>
                             </div>
-                            <div className="footer-social-area">
+                            <div className="footer-social-area ">
                                 <ul className="list-unstyled">
                                     <li><a href=" "><i className="fa fa-facebook"></i></a></li>
                                     <li><a href=" "><i className="fa fa-twitter"></i></a></li>
                                     <li><a href=" "><i className="fa fa-instagram"></i></a></li>
-                                    <li><a href=" "><i className="fa fa-skype"></i></a></li>
-                                    <li><a href=" "><i className="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>

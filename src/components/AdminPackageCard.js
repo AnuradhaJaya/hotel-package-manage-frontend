@@ -18,21 +18,21 @@ const AdminPackageCard = ({ data, fetchdata }) => {
               <img src={data.packImage[0]} alt="package" />
             </div>
           </td>
-          <td className="product-name w-80">
-            <div className="text-ellipsis line-clamp-2 w-48 text-left">
+          <td className="">
+            <div className="text-ellipsis line-clamp-2  w-48 text-left">
               {data.packtName}
             </div>
           </td>
-          <td className="product-name w-5 text-left">
-            <div className="">{data.category}</div>
+          <td className="t">
+            <div className="capitalize">{data.category}</div>
           </td>
-          <td className="product-name w-7 text-left">
+          <td className="">
             {displayLKRCurrency(data.price)}
           </td>
-          <td className="product-name w-5 text-left">
+          <td className="">
             <span className="product-quantity">{data.discount}%</span>
           </td>
-          <td className="product-name w-5 text-left">
+          <td className="">
             <div
               className="text-3xl pl-5 hover:scale-110"
               title={

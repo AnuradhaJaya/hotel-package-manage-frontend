@@ -41,7 +41,7 @@ const CategoryList = () => {
                         <li key={index}>
                             <Link to={"/package-category/" + product?.category} className='capitalize'>
                                 {product?.category}
-                                <span>(5)</span>
+                                <span></span>
                             </Link>
                         </li>
                     ))

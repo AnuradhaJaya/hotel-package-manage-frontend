@@ -8,11 +8,13 @@ import "../assets/plugins/swiper/swiper.min.css";
 import "../assets/css/style.css";
 import "../assets/css/responsive.css";
 import "../assets/css/custom.css";
+import "../assets/css/Navbar.css";
 import logo2 from "../assets/img/logo2.png";
 import { BsSearch } from "react-icons/bs";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { MdShoppingCart } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { IoClose, IoMenu } from "react-icons/io5";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import summaryApi from "../common";
 import { toast } from "react-toastify";
@@ -44,12 +46,24 @@ const Header = () => {
     }
   };
 
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const closeMenuOnMobile = () => {
+    if (window.innerWidth <= 1150) {
+      setShowMenu(false);
+    }
+  };
+
   return (
     // <header className='h-16 shadow-md bg-white fixed w-full z-40'>
-    //     <div className='container mx-auto h-full flex items-center px-4 justify-between'>
+    //     <div className='container mx-auto h-full min-w-full flex items-center px-4 justify-between'>
     //         <div className='w={90} h={50}'>
     //             <Link to={"/"}>
-    //                 <img className='default-logo' src={logo2} data-rjs="2" alt="ecommerce" />
+    //                 <img className='w-72 max-w-max' src={logo2} data-rjs="2" alt="ecommerce" />
     //             </Link>
     //         </div>
     //          <div className="col-6 col-sm-6 col-md-6 col-lg-7 col-xl-6">
@@ -98,11 +112,11 @@ const Header = () => {
     //                         }
     //                         </div>
     //                         {menuDisplay && (
-    //                             <div className='absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded '>
+    //                             <div className='absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded opacity-60'>
     //                                 <nav>
     //                                     {
     //                                         user?.role === ROLE.ADMIN && (
-    //                                             <Link to={"admin-panel/all-packages"} className='whitespace-nowrap hidden md:block hover:bg-slate-100 p-2' onClick={() => setMenuDisplay(prev => !prev)}>Admin</Link>
+    //                                             <Link to={"admin-panel/all-packages"} className='whitespace-nowrap hidden md:block hover:text-black p-2' onClick={() => setMenuDisplay(prev => !prev)}>Admin</Link>
     //                                         )
     //                                     }
     //                                 </nav>
@@ -133,53 +147,53 @@ const Header = () => {
     //         </div>
     //     </div>
     // </header>
-    <header className="header">
-      <div className="main-header-wraper main-header inner-page-header shadow-lg">
-        <div className="container-fluid">
-          <div className="row align-items-center">
-            <div className="col-6 col-sm-6 col-md-3 col-lg-2 col-xl-3">
-              <div className="logo-container">
-                <div className="w={90} h={50}">
-                  <Link to={"/"}>
-                    <img
-                      className="default-logo"
-                      src={logo2}
-                      data-rjs="2"
-                      alt="ecommerce"
-                    />
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-6 col-sm-6 col-md-6 col-lg-7 col-xl-6">
-              <div className="menu-container">
-                <div className="menu-wraper">
-                  <nav>
-                    <div className="header-menu dosis">
-                      <div id="menu-button">
-                        <i className="fa fa-bars"></i>
-                      </div>
-                      <ul>
-                        <li>
-                          <a href=" ">Home</a>
-                        </li>
-                        <li>
-                          <a href=" ">Room</a>
-                        </li>
-                        <li>
-                          <a href=" ">Event</a>
-                        </li>
-                        <li class="active">
-                          <a href=" ">Offers</a>
-                        </li>
-                        <li>
-                          <a href="">Contact</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </nav>
-                </div>
-              </div>
+
+    <header className="header h-20 shadow-md bg-white fixed w-full z-40">
+      <nav className="nav container mx-auto h-full min-w-full flex items-center px-4">
+        <div className="-ml-12 -mt-20">
+          <Link to={"/"}>
+            <img
+              className="w-72 max-w-max "
+              src={logo2}
+              data-rjs="2"
+              alt="ecommerce"
+            />
+          </Link>
+        </div>
+
+        <div
+          className={`nav__menu ${showMenu ? "show-menu" : ""}`}
+          id="nav-menu"
+        >
+          <ul className="nav__list -mt-6">
+            <div className="header-menu text-5xl">
+              <ul>
+                <li onClick={closeMenuOnMobile}>
+                  <a href=" " className="cursor-pointer">
+                    Home
+                  </a>
+                </li>
+                <li onClick={closeMenuOnMobile}>
+                  <a href=" " className="cursor-pointer">
+                    Room
+                  </a>
+                </li>
+                <li onClick={closeMenuOnMobile}>
+                  <a href=" " className="cursor-pointer">
+                    Event
+                  </a>
+                </li>
+                <li onClick={closeMenuOnMobile} className="active">
+                  <a href=" " className="cursor-pointer">
+                    Offers
+                  </a>
+                </li>
+                <li onClick={closeMenuOnMobile}>
+                  <a href=" " className="cursor-pointer">
+                    Contact
+                  </a>
+                </li>
+              </ul>
             </div>
 
             <div className="col-12 col-sm-12 col-md-3 top-order">
@@ -189,7 +203,7 @@ const Header = () => {
                     <div className="relative flex justify-center">
                       {user?._id && (
                         <div
-                          className="text-4xl cursor-pointer relative flex justify-center"
+                          className=" text-black text-4xl cursor-pointer relative flex justify-center"
                           onClick={() => setMenuDisplay((preve) => !preve)}
                         >
                           {user?.profilepic ? (
@@ -205,15 +219,15 @@ const Header = () => {
                       )}
                     </div>
                     {menuDisplay && (
-                      <div className="absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg opacity-50 rounded ">
+                      <div className="absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded opacity-60">
                         <nav>
                           {user?.role === ROLE.ADMIN && (
                             <Link
                               to={"admin-panel/all-packages"}
-                              className="whitespace-nowrap hidden md:block p-3 text-black"
+                              className="whitespace-nowrap hidden md:block hover:text-black p-2"
                               onClick={() => setMenuDisplay((prev) => !prev)}
                             >
-                              Admin 
+                              Admin
                             </Link>
                           )}
                         </nav>
@@ -253,9 +267,20 @@ const Header = () => {
                 </ul>
               </div>
             </div>
+          </ul>
+          <div className="nav__close" id="nav-close" onClick={toggleMenu}>
+            <IoClose />
           </div>
         </div>
-      </div>
+
+        <div
+          className="nav__toggle -mt-20"
+          id="nav-toggle"
+          onClick={toggleMenu}
+        >
+          <IoMenu />
+        </div>
+      </nav>
     </header>
   );
 };

@@ -340,7 +340,7 @@ const SearchPackage = () => {
                 <div className="row">
                   <div className="col-12">
                     {/* blog pagination */}
-                    <div className="blog-pagination-wrap">
+                    {/* <div className="blog-pagination-wrap">
                       <ul className="pagination blog-pagination list-unstyled">
                         <li className="disabled">
                           <a href="#">
@@ -365,7 +365,7 @@ const SearchPackage = () => {
                           </a>
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
                     {/* End of blog pagination */}
                   </div>
                 </div>

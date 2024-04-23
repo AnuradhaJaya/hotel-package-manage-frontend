@@ -24,9 +24,8 @@ const AllPackageCategory = () => {
   return (
     <div>
       {allPackage.map((pack, index) => {
-        if (pack?.status === STATUS.Active) {
           const isEvenIndex = index % 2 === 0;
-
+          if (pack?.status === STATUS.Active) {
           return (
             <div key={index}>
               {isEvenIndex ? (
