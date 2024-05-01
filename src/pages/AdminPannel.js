@@ -15,7 +15,7 @@ const AdminPannel = () => {
   }, [user]);
   return (
     <div className="min-h-[calc(53.5vh-120px)] pt-3  md:flex hidden">
-       <aside className="bg-white pt-14  min-h-full w-full max-w-60 ">
+       {/* <aside className="bg-white pt-14  min-h-full w-full max-w-60 ">
         <div className="h-32 bg-white  flex justify-center items-center flex-col">
           <div
             className="text-6xl text-black cursor-pointer  flex justify-center "
@@ -58,7 +58,7 @@ const AdminPannel = () => {
             All Packages
           </Link>
         </div>
-      </aside> 
+      </aside>  */}
       
       <main className="h-full w-full">
         <Outlet />
