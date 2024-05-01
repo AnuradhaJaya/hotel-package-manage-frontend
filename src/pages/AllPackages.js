@@ -34,15 +34,17 @@ const AllPackages = () => {
 
   return (
     <main id="main" class="main">
-      <div className="pagetitle">
-            <h1>Offers</h1>
-            <nav>
-              <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li className="breadcrumb-item active">Offers</li>
-              </ol>
-            </nav>
-          </div>
+      <div className="pagetitle -mt-12">
+        <h1>Offers</h1>
+        <nav>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="index.html">Home</a>
+            </li>
+            <li className="breadcrumb-item active">Offers</li>
+          </ol>
+        </nav>
+      </div>
       <div className="">
         <section className="pt-0 pb-100">
           <div className="container">
@@ -51,7 +53,7 @@ const AllPackages = () => {
                 <div className="woocommerce">
                   <div className="cart-product-wrap">
                     <div className=" -px-7 pb-60 flex justify-between items-center">
-                     <h2 className="font-bold text-3xl text-black">     </h2> 
+                      <h2 className="font-bold text-3xl text-black"> </h2>
                       <button
                         className="border-2 py-2 px-3 text-sm   bg-black text-white"
                         onClick={() => setOpenUploadPackage(true)}

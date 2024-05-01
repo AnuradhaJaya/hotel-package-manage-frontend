@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import AdminComponentWrapper from "../components/AdminComponentWrapper";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
@@ -19,9 +20,10 @@ const AdminPannel = () => {
     <>
       <div className="min-h-[calc(53.5vh-120px)] pt-3 ">
         <AdminHeader />
-         <div className="min-h-full w-full max-w-0">
+        <div className="min-h-full w-full max-w-0">
           <AdminSideBar />
-        </div> 
+        </div>
+
         {/* <aside className="bg-white pt-14  min-h-full w-full max-w-60 ">
         <div className="h-32 bg-white  flex justify-center items-center flex-col">
           <div

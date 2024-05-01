@@ -1,39 +1,33 @@
 import React from "react";
-import "../assets/vendor/bootstrap/css/bootstrap.min.css";
-import "../assets/vendor/bootstrap-icons/bootstrap-icons.css";
-import "../assets/vendor/boxicons/css/boxicons.min.css";
-import "../assets/vendor/quill/quill.snow.css";
-import "../assets/vendor/quill/quill.bubble.css";
-import "../assets/vendor/remixicon/remixicon.css";
-import "../assets/vendor/simple-datatables/style.css";
-import "../assets/css/styleadmin.css";
 import { Link } from "react-router-dom";
-
+import avt from "../assets/img/avatar/avatar-illustrated-02.png";
+import mainavt from "../assets/img/avatar/avatar-illustrated-01.png";
 function AdminSideBar() {
   return (
     <>
-      <aside id="sidebar" className="sidebar">
+      <aside className="sidebar shadow-none -mt-3">
         <ul className="sidebar-nav" id="sidebar-nav">
           <li className="nav-item ">
-            <Link to={""} className="nav-link h-20">
-              <i className="bi bi-grid"></i>
-              <span>Alone</span>
+            <Link to={""} className="nav-link h-20 space-x-3">
+              <img src={avt} alt="User" className="w-8 h-8 rounded-full" />
+              <span className="space-x-5">Alan & Alone</span>
             </Link>
           </li>
           {/* End Dashboard Nav */}
 
-          <div className="pt-12 bg-red-500  ">
-            <li className="nav-item gap-3">
+          <div className="pt-12 ">
+            <li className="nav-item ">
               <Link to={"dashboard-packages"} className="nav-link collapsed">
-                <i className="bi bi-grid-1x2-fil"></i>
+                <i className="bi bi-grid-fill"></i>
                 <span className="text-neutral-500">Dashboard</span>
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link collapsed" href="users-profile.html">
+              <Link to={"/404"} className="nav-link collapsed">
+                {" "}
                 <i className="bi bi-person-fill"></i>
                 <span className="text-neutral-500">User</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <Link to={"all-packages"} className="nav-link collapsed">
@@ -42,10 +36,11 @@ function AdminSideBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link collapsed" href="users-profile.html">
+              <Link to={"/404"} className="nav-link collapsed">
+                {" "}
                 <i className="bi bi-box-arrow-left"></i>
                 <span className="text-neutral-500">Logout</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <Link to={"/404"} className="nav-link collapsed">
@@ -55,6 +50,13 @@ function AdminSideBar() {
             </li>
           </div>
         </ul>
+        <div className="flex  items-center mt-64 space-x-3 pl-5">
+          <img src={mainavt} alt="User" className="w-14 h-14 rounded-full" />
+          <div>
+            <p className="font-semibold text-sm">Nafisa Sh.</p>
+            <p className="text-xs text-gray-500  -mt-5">Support manager</p>
+          </div>
+        </div>
       </aside>
     </>
   );

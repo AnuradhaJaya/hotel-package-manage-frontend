@@ -1,27 +1,27 @@
 import React from "react";
-import "../assets/vendor/bootstrap/css/bootstrap.min.css";
-import "../assets/vendor/bootstrap-icons/bootstrap-icons.css";
-import "../assets/vendor/boxicons/css/boxicons.min.css";
-import "../assets/vendor/quill/quill.snow.css";
-import "../assets/vendor/quill/quill.bubble.css";
-import "../assets/vendor/remixicon/remixicon.css";
-import "../assets/vendor/simple-datatables/style.css";
-import "../assets/css/styleadmin.css";
-import { IoSearch } from "react-icons/io5";
 
+import { IoSearch } from "react-icons/io5";
+import avt from "../assets/img/avatar/avatar-illustrated-02.png";
+import logo2 from "../assets/img/logo2.png";
+import { Link } from "react-router-dom";
 const AdminHeader = () => {
   return (
     <div>
       <header
         id="header"
-        className="header fixed-top d-flex align-items-center"
+        className="header fixed-top d-flex align-items-center shadow-none bg-light"
       >
         <div className="d-flex align-items-center justify-content-between">
-          <a href="index.html" className="logo d-flex align-items-center">
-            <img src="assets/img/logo.png" alt="" />
-            <span className="d-none d-lg-block">NiceAdmin</span>
-          </a>
-          <i className="bi bi-list toggle-sidebar-btn"></i>
+
+          <Link to={"/"}>
+            <img
+              className="w-72 max-w-max logo d-flex align-items-center"
+              src={logo2}
+              data-rjs="2"
+              alt="ecommerce"
+            />
+          </Link>
+
         </div>
         {/* End Logo */}
 
@@ -164,7 +164,7 @@ const AdminHeader = () => {
                 data-bs-toggle="dropdown"
               >
                 <img
-                  src="assets/img/profile-img.jpg"
+                  src={avt}
                   alt="Profile"
                   className="rounded-circle"
                 />

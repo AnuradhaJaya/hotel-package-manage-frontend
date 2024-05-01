@@ -10,6 +10,7 @@ import Context from './context';
 import { useDispatch } from 'react-redux';
 import { setUserDetails } from './store/usersSlice';
 import summaryApi from './common';
+import ComponentWrapper from './components/ComponentWrapper';
 function App() {
   const dispatch = useDispatch();
 
@@ -37,7 +38,7 @@ function App() {
   }, []); // Added an empty dependency array to ensure useEffect runs only once
 
   return (
-    <>
+    <ComponentWrapper>
       <Context.Provider value={{
         fetchUserDetails // User detail fetch function
       }}>
@@ -48,7 +49,7 @@ function App() {
         </main>
 
       </Context.Provider>
-    </>
+    </ComponentWrapper>
   );
 }
 

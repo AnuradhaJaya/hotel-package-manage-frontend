@@ -51,25 +51,24 @@ const router = createBrowserRouter([
         path: "search",
         element: <SearchPackage />,
       },
-      { path: "404", 
-        element: <NotFoundView /> },
+      { path: "404", element: <NotFoundView /> },
+    ],
+  },
+  {
+    path: "admin-panel",
+    element: <AdminPannel />,
+    children: [
       {
-        path: "admin-panel",
-        element: <AdminPannel />,
-        children: [
-          {
-            path: "all-users",
-            element: <AllUser />,
-          },
-          {
-            path: "all-packages",
-            element: <AllPackages />,
-          },
-          {
-            path: "dashboard-packages",
-            element: <OffersDashboard />,
-          },
-        ],
+        path: "all-users",
+        element: <AllUser />,
+      },
+      {
+        path: "all-packages",
+        element: <AllPackages />,
+      },
+      {
+        path: "dashboard-packages",
+        element: <OffersDashboard />,
       },
     ],
   },

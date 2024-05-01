@@ -1,15 +1,4 @@
 import React from "react";
-import "../assets/vendor/bootstrap/css/bootstrap.min.css";
-import "../assets/vendor/bootstrap-icons/bootstrap-icons.css";
-import "../assets/vendor/boxicons/css/boxicons.min.css";
-import "../assets/vendor/quill/quill.snow.css";
-import "../assets/vendor/quill/quill.bubble.css";
-import "../assets/vendor/remixicon/remixicon.css";
-import "../assets/vendor/simple-datatables/style.css";
-import "../assets/css/styleadmin.css";
-
-import bg from "../assets/img/pattern2.png";
-import CategoryList from "../components/CategoryList";
 import AllPackageCategory from "../components/AllPackageCategory";
 import PackageSidebar from "../components/PackageSidebar";
 import Header from "../components/Header";
@@ -17,7 +6,7 @@ import Header from "../components/Header";
 const Home = () => {
   return (
     <div>
-      <Header/>
+      <Header />
       <section className="page-title-inner">
         <div className="container">
           <div className="row">
@@ -86,7 +75,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <PackageSidebar/>
+            <PackageSidebar />
           </div>
         </div>
       </section>

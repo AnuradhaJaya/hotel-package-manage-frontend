@@ -1,14 +1,4 @@
 import React, { useState } from "react";
-import "../assets/css/bootstrap.min.css";
-import "../assets/css/font-awesome.min.css";
-import "../assets/plugins/owl-carousel/owl.carousel.min.css";
-import "../assets/plugins/Magnific-Popup/magnific-popup.css";
-import "../assets/plugins/animate-css/animate.min.css";
-import "../assets/plugins/swiper/swiper.min.css";
-import "../assets/css/style.css";
-import "../assets/css/responsive.css";
-import "../assets/css/custom.css";
-import "../assets/css/Navbar.css";
 import logo2 from "../assets/img/logo2.png";
 import { BsSearch } from "react-icons/bs";
 import { FaRegCircleUser } from "react-icons/fa6";
