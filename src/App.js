@@ -42,11 +42,11 @@ function App() {
         fetchUserDetails // User detail fetch function
       }}>
         <ToastContainer />
-        <Header />
+    
         <main className='min-h-[calc(100vh-120vh)] pt-16'>
           <Outlet />
         </main>
-        <Footer />
+
       </Context.Provider>
     </>
   );

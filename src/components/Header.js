@@ -165,7 +165,7 @@ const Header = () => {
           className={`nav__menu ${showMenu ? "show-menu" : ""}`}
           id="nav-menu"
         >
-          <ul className="nav__list -mt-6">
+          <ul className="nav__list -mt-10">
             <div className="header-menu text-5xl">
               <ul>
                 <li onClick={closeMenuOnMobile}>

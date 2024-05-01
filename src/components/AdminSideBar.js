@@ -7,60 +7,53 @@ import "../assets/vendor/quill/quill.bubble.css";
 import "../assets/vendor/remixicon/remixicon.css";
 import "../assets/vendor/simple-datatables/style.css";
 import "../assets/css/styleadmin.css";
+import { Link } from "react-router-dom";
 
 function AdminSideBar() {
   return (
     <>
       <aside id="sidebar" className="sidebar">
         <ul className="sidebar-nav" id="sidebar-nav">
-          <li className="nav-item">
-            <a className="nav-link" href="index.html">
+          <li className="nav-item ">
+            <Link to={""} className="nav-link h-20">
               <i className="bi bi-grid"></i>
-              <span>Dashboard</span>
-            </a>
+              <span>Alone</span>
+            </Link>
           </li>
           {/* End Dashboard Nav */}
 
-          <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              data-bs-target="#components-nav"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i className="bi bi-menu-button-wide"></i>
-              <span>Components</span>
-              <i className="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul
-              id="components-nav"
-              className="nav-content collapse"
-              data-bs-parent="#sidebar-nav"
-            >
-              <li>
-                <a href="components-alerts.html">
-                  <i className="bi bi-circle"></i>
-                  <span>Alerts</span>
-                </a>
-              </li>
-              {/* More component items */}
-            </ul>
-          </li>
-          {/* End Components Nav */}
-
-          {/* More nav items */}
-
-          <li className="nav-heading">Pages</li>
-
-          <li className="nav-item">
-            <a className="nav-link collapsed" href="users-profile.html">
-              <i className="bi bi-person"></i>
-              <span>Profile</span>
-            </a>
-          </li>
-          {/* End Profile Page Nav */}
-
-          {/* More page items */}
+          <div className="pt-12 bg-red-500  ">
+            <li className="nav-item gap-3">
+              <Link to={"dashboard-packages"} className="nav-link collapsed">
+                <i className="bi bi-grid-1x2-fil"></i>
+                <span className="text-neutral-500">Dashboard</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link collapsed" href="users-profile.html">
+                <i className="bi bi-person-fill"></i>
+                <span className="text-neutral-500">User</span>
+              </a>
+            </li>
+            <li className="nav-item">
+              <Link to={"all-packages"} className="nav-link collapsed">
+                <i className="bi bi-handbag-fill"></i>
+                <span className="text-neutral-500">Offers</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link collapsed" href="users-profile.html">
+                <i className="bi bi-box-arrow-left"></i>
+                <span className="text-neutral-500">Logout</span>
+              </a>
+            </li>
+            <li className="nav-item">
+              <Link to={"/404"} className="nav-link collapsed">
+                <i className="bi bi-file-earmark-excel-fill"></i>
+                <span className="text-neutral-500">Not Found</span>
+              </Link>
+            </li>
+          </div>
         </ul>
       </aside>
     </>

@@ -7,6 +7,7 @@ import "../assets/vendor/quill/quill.bubble.css";
 import "../assets/vendor/remixicon/remixicon.css";
 import "../assets/vendor/simple-datatables/style.css";
 import "../assets/css/styleadmin.css";
+import { IoSearch } from "react-icons/io5";
 
 const AdminHeader = () => {
   return (
@@ -24,7 +25,7 @@ const AdminHeader = () => {
         </div>
         {/* End Logo */}
 
-        <div className="search-bar">
+        {/* <div className="search-bar">
           <form
             className="search-form d-flex align-items-center"
           >
@@ -35,10 +36,12 @@ const AdminHeader = () => {
               title="Enter search keyword"
             />
             <button type="submit" title="Search">
-              <i className="bi bi-search"></i>
+
+              <IoSearch/>
+
             </button>
           </form>
-        </div>
+        </div> */}
         {/* End Search Bar */}
 
         <nav className="header-nav ms-auto">
@@ -165,9 +168,7 @@ const AdminHeader = () => {
                   alt="Profile"
                   className="rounded-circle"
                 />
-                <span className="d-none d-md-block dropdown-toggle ps-2">
-                  K. Anderson
-                </span>
+             
               </a>
               {/* End Profile Image Icon */}
 

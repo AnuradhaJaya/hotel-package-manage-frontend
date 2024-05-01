@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import ROLE from "../common/role";
 //import AdminBar from "../components/AdminBar"
-
+import AdminHeader from "../components/AdminHeader";
+import AdminSideBar from "../components/AdminSideBar";
+import AdminFooter from "../components/AdminFooter";
 const AdminPannel = () => {
   const user = useSelector((state) => state?.user?.user);
   const navigate = useNavigate();
@@ -14,8 +16,13 @@ const AdminPannel = () => {
     }
   }, [user]);
   return (
-    <div className="min-h-[calc(53.5vh-120px)] pt-3  md:flex hidden">
-       {/* <aside className="bg-white pt-14  min-h-full w-full max-w-60 ">
+    <>
+      <div className="min-h-[calc(53.5vh-120px)] pt-3 ">
+        <AdminHeader />
+         <div className="min-h-full w-full max-w-0">
+          <AdminSideBar />
+        </div> 
+        {/* <aside className="bg-white pt-14  min-h-full w-full max-w-60 ">
         <div className="h-32 bg-white  flex justify-center items-center flex-col">
           <div
             className="text-6xl text-black cursor-pointer  flex justify-center "
@@ -59,11 +66,14 @@ const AdminPannel = () => {
           </Link>
         </div>
       </aside>  */}
-      
-      <main className="h-full w-full">
-        <Outlet />
-      </main>
-    </div>
+
+        <main className="h-full w-full">
+          <Outlet />
+        </main>
+      </div>
+
+      <AdminFooter />
+    </>
   );
 };
 

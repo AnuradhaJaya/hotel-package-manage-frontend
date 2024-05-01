@@ -11,61 +11,67 @@ import CategoryPackages from "../pages/CategoryPackage";
 import PackageDetails from "../pages/PackageDetails";
 import PackageCategoryDetails from "../pages/PackageCategoryDetails";
 import SearchPackage from "../pages/SearchPackage";
-
+import OffersDashboard from "../pages/OffersDashboard";
+import NotFoundView from "../pages/NotFoundView";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <App/>,
-      children: [
-        {
-          path: "",
-          element: <Home/>
-        },
-        {
-          path: "login",
-          element: <Login/>
-        },
-        {
-          path: "forgot-password",
-          element: <ForgotPassword/>
-        },
-        {
-          path: "signup",
-          element:<Signup/>
-        },
-        {
-          path: "package-category/:category",
-          element:<CategoryPackages/> 
-        },{
-          path: "package-details/:id",
-          element:<PackageDetails/> 
-        },{
-          path: "/package-category/:category/package-category-details/:id",
-          element:<PackageCategoryDetails/>
-        },{
-          path: "search",
-          element:<SearchPackage/>
-        },
-        {
-          path: "admin-panel",
-          element:<AdminPannel/>,
-          children : [
-            {
-              path : "all-users",
-              element: <AllUser/>              
-            }, 
-            {
-              path : "all-packages",
-              element: <AllPackages/>            
-            }
-
-          ]
-        }
-
-
-
-      ]
-    }
-])  
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "",
+        element: <Home />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "forgot-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
+      },
+      {
+        path: "package-category/:category",
+        element: <CategoryPackages />,
+      },
+      {
+        path: "package-details/:id",
+        element: <PackageDetails />,
+      },
+      {
+        path: "/package-category/:category/package-category-details/:id",
+        element: <PackageCategoryDetails />,
+      },
+      {
+        path: "search",
+        element: <SearchPackage />,
+      },
+      { path: "404", 
+        element: <NotFoundView /> },
+      {
+        path: "admin-panel",
+        element: <AdminPannel />,
+        children: [
+          {
+            path: "all-users",
+            element: <AllUser />,
+          },
+          {
+            path: "all-packages",
+            element: <AllPackages />,
+          },
+          {
+            path: "dashboard-packages",
+            element: <OffersDashboard />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 export default router;
