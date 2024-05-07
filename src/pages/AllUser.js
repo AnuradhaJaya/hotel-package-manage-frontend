@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import summaryApi from '../common'
 import { toast } from 'react-toastify'
 import moment from 'moment'
-import { BiSolidEditAlt } from "react-icons/bi";
+import { BiEdit } from 'react-icons/bi';
+
+// Now you can use <BiEdit /> wherever you need the edit icon
+
 import { MdDeleteForever } from "react-icons/md";
 import ChangeUserRole from '../components/ChangeUserRole';
 
@@ -66,7 +69,7 @@ const AllUser = () => {
 
                     }}
                     >
-                    <BiSolidEditAlt/>
+                    <BiEdit/>
                     </button>
                   </td>
                   <td>

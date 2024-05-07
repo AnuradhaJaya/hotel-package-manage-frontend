@@ -3,13 +3,12 @@ import './App.css';
 import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import { useEffect } from 'react';
 import Context from './context';
 import { useDispatch } from 'react-redux';
 import { setUserDetails } from './store/usersSlice';
 import summaryApi from './common';
+import Header from 'components/Header';
 function App() {
   const dispatch = useDispatch();
 
@@ -37,18 +36,14 @@ function App() {
   }, []); // Added an empty dependency array to ensure useEffect runs only once
 
   return (
-    <>
       <Context.Provider value={{
         fetchUserDetails // User detail fetch function
       }}>
-        <ToastContainer />
-        <Header />
-        <main className='min-h-[calc(100vh-120vh)] pt-16'>
+        <ToastContainer /> 
+        <main className='min-h-[calc(100vh-120vh)] pt-0'>
           <Outlet />
         </main>
-        <Footer />
       </Context.Provider>
-    </>
   );
 }
 

@@ -57,6 +57,26 @@ const summaryApi = {
     url: `${backendDomin}/api/delete-package`,
     method: "post",
   },
+  send_email: {
+    url: `${backendDomin}/api/send-email`,
+    method: "post",
+  },
+  get_emails: {
+    url: `${backendDomin}/api/get-emails`,
+    method: "get",
+  },
+  send_email_message: {
+    url: `${backendDomin}/api/send-message`,
+    method: "post",
+  },
+  store_email: {
+    url: `${backendDomin}/api/store-message`,
+    method: "post",
+  },
+  get_send_message: {
+    url: `${backendDomin}/api/get-send-message`,
+    method: "post",
+  },
 };
 
 export default summaryApi;
