@@ -40,8 +40,13 @@ const AllUser = () => {
     fetchAllUsers()
   },[])
   return (
+<<<<<<< Updated upstream
     <div  className='white pt-24 pl-4'>
       <table className='w-full userTable  text-navy-600 dark:text-white'>
+=======
+    <div  className='pt-24 pl-4'>
+      <table className=' w-full userTable text-navy-700 dark:text-white'>
+>>>>>>> Stashed changes
         <thead>
           <th>SeriNo</th>
           <th>Name</th>
@@ -61,7 +66,11 @@ const AllUser = () => {
                   <td>{el?.role}</td>
                   <td>{moment(el?.createdAt).format('LL')}</td>
                   <td>
+<<<<<<< Updated upstream
                     <button className=' cursor-pointer  text-3xl text-green-700 hover:text-green-700 hover:scale-115 '
+=======
+                    <button className=' cursor-pointer  text-3xl text-green-500  hover:text-green-700 hover:scale-110 '
+>>>>>>> Stashed changes
                     onClick={()=>{
                       setUpdateUserDetails(el)
                       setOpenUpdateRole(true)
@@ -73,7 +82,11 @@ const AllUser = () => {
                     </button>
                   </td>
                   <td>
+<<<<<<< Updated upstream
                     <button className='cursor-pointer text-3xl text-red-500 hover:text-red-700 hover:scale-115'>
+=======
+                    <button className='cursor-pointer text-3xl text-red-500 hover:text-red-700 hover:scale-110'>
+>>>>>>> Stashed changes
                     <MdDeleteForever/>
                     </button>
                   </td>

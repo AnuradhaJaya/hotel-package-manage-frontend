@@ -23,7 +23,7 @@ const Sidebar = ({ open, onClose }) => {
 
       <div className={`mx-[56px] mt-[50px] flex items-center`}>
         <div className="mt-1 ml-1 h-2.5 font-poppins text-[26px] font-bold uppercase text-navy-700 dark:text-white">
-          <Link to={"/offers"} className="hover:text-teal-500">
+          <Link to={"/"} className="hover:text-teal-500">
           Elephant <span class="font-medium">Bay</span>
           </Link>
         </div>

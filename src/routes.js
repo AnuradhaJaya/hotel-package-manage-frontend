@@ -14,13 +14,13 @@ import Users from "./pages/AllUser";
 
 // Icon Imports
 import {
-  MdHome,
+  //MdHome,
   MdOutlineShoppingCart,
   MdBarChart,
   MdPerson,
   MdAssignment,
   MdOutlineDashboard,
-  MdLock,
+ // MdLock,
 } from "react-icons/md";
 
 const routes = [

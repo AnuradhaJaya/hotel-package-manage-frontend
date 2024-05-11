@@ -63,10 +63,17 @@ function FeedbackForm() {
 
     return (
 
+<<<<<<< Updated upstream
         <div className="bg-blueGray-50 py-8 px-8 md:px-0">
             <h2 className="text-center text-lg font-bold text-green-500 mb-2">Feedback Form</h2>
 
             <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-12 bg-white w-full mb-6 shadow-lg rounded">
+=======
+        <div className="bg-blueGray-50 pt-2 pb-4 px-4 md:px-0">
+            <h2 className="text-center text-lg font-bold text-green-500 mb-2">Feedback Form</h2>
+
+            <form onSubmit={handleSubmit} className=" p-5 max-w-lg mx-auto bg-gray-50 shadow-lg rounded">
+>>>>>>> Stashed changes
                 <div className="mb-2">
                     <label htmlFor="name" className="block font-semibold text-gray-700">Name:</label>
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required className="form-input border-2" />
@@ -93,7 +100,11 @@ function FeedbackForm() {
                             <tr>
                                 <th className="w-1/6"></th>
                                 <th className="w-1/6">Poor</th>
+<<<<<<< Updated upstream
                                 <th className="w-1/6"> Excellent</th>
+=======
+                                <th className="w-3">Excellent</th>
+>>>>>>> Stashed changes
                                 <th className="w-1/6">Good</th>
                                 <th className="w-1/6">Very Good</th>
                                 <th className="w-1/6">Satisfactory</th>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Nft2 from "assets/img/nfts/Nft2.png";
-import Nft1 from "assets/img/nfts/Nft1.png";
-import Nft3 from "assets/img/nfts/Nft3.png";
-import Nft4 from "assets/img/nfts/Nft4.png";
-import Nft5 from "assets/img/nfts/Nft5.png";
-import Nft6 from "assets/img/nfts/Nft6.png";
+// import Nft1 from "assets/img/nfts/Nft1.png";
+// import Nft3 from "assets/img/nfts/Nft3.png";
+// import Nft4 from "assets/img/nfts/Nft4.png";
+// import Nft5 from "assets/img/nfts/Nft5.png";
+// import Nft6 from "assets/img/nfts/Nft6.png";
 
-import { FaEthereum } from "react-icons/fa";
+//import { FaEthereum } from "react-icons/fa";
 import Card from "components/card";
 import SummaryApi from "common";
 import moment from "moment";
@@ -50,7 +50,7 @@ const HistoryCard = () => {
             <div className="h-6 w-6 flex items-center justify-center">
               <img
                 className="h-full w-full rounded-full mb-6"
-                src={Nft1}
+                src={Nft2}
                 alt=""
               />
             </div>

@@ -30,7 +30,7 @@ const Footer = () => {
     };
     return (
 
-        <footer className="footer-type4 z-40">
+        <footer className="footer-type2 z-40 secondary-bg">
             <div className="footer-top">
                 <div className="container">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -5,8 +5,13 @@ import MiniCalendar from "../../../components/calendar/MiniCalendar";
 import WeeklyRevenue from "./components/WeeklyRevenue";
 import TotalSpent from "./components/TotalSpent";
 import { IoMdGift } from "react-icons/io";
+<<<<<<< Updated upstream
 import {  columnsDataComplex } from "./variables/columnsData";
 import { IoMdCloudDownload } from "react-icons/io";
+=======
+import { MdOutlineCloudDownload } from "react-icons/md";
+import { columnsDataComplex } from "./variables/columnsData";
+>>>>>>> Stashed changes
 import Widget from "../../../components/widget/Widget";
 import CheckTable from "./components/CheckTable";
 import DailyTraffic from "./components/DailyTraffic";
@@ -62,8 +67,13 @@ const Dashboard = () => {
           title={"Deactivated Offers"}
           subtitle={inactivePackageCount}
         />
+<<<<<<< Updated upstream
          <Widget
           icon={<IoMdCloudDownload className="h-10 w-10" />}
+=======
+        <Widget
+          icon={<MdOutlineCloudDownload className="h-10 w-10" />}
+>>>>>>> Stashed changes
           title={"Download PDF"}
           subtitle={""}
         />

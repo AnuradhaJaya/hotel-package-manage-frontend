@@ -5,7 +5,6 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import SummaryApi from "../common";
 import STATUS from "../common/status";
 const PackageSidebar = () => {
-  const navigate = useNavigate();
   const searchInput = useLocation();
   const URLSearch = new URLSearchParams(searchInput?.search);
   const searchQuery = URLSearch.getAll("q");
@@ -46,6 +45,22 @@ const PackageSidebar = () => {
   const popularPackages = allPackage
     .filter((pack) => pack?.status === STATUS.Active)
     .slice(0, 3);
+
+  //email marketing
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can perform any necessary validation or processing of the email
+
+    // Navigate to the "/send-email" route and pass the email as state
+    navigate("/send-email", { state: { email } });
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
 
   return (
     <div className="col-lg-3">
@@ -152,11 +167,13 @@ const PackageSidebar = () => {
           {/* End of widget title */}
           <p>JOIN Elephantbay INSIDER AND SAVE 30%.</p>
           <div className="stay-form sidebar-stay-form parsley-validate">
-            <form action="#" method="post">
+            <form onSubmit={handleSubmit}>
               <input
-                type="Email"
-                placeholder="Your Email Here"
+                type="email"
                 className="theme-input-style"
+                placeholder="your email here"
+                value={email}
+                onChange={handleEmailChange}
                 required
               />
               <button type="submit">
