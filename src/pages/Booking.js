@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SummaryApi from "../common";
 import displayLKRCurrency from "../helpers/displayCurrency";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 const Booking = () => {
   const [data, setData] = useState({
     packtName: "",
@@ -40,6 +42,7 @@ const Booking = () => {
   }, []);
   return (
     <div>
+      <Header/>
       <section className="page-title-inner py-6">
         <div className="container">
           <div className="row">
@@ -53,7 +56,7 @@ const Booking = () => {
                 </div>
                 <ul className="list-unstyled mb-0">
                   <li>
-                    <a href=" ">home</a>
+                    <a href=" ">Offers</a>
                   </li>
                   <li className="active">
                     <a href=" ">check-in</a>
@@ -65,12 +68,12 @@ const Booking = () => {
           </div>
         </div>
       </section>
-      <section className="pt-100 pb-100">
+      <section className="pt-0 pb-100">
         <div className="container">
           <div className="row">
             <div className="col-12">
               <div className="billing-details-wrap">
-                <form action="#" method="POST">
+                <form>
                   <div className="row justify-content-center">
                     <div className="col-lg-6">
                       <div className="billing-details">
@@ -112,7 +115,6 @@ const Booking = () => {
                                 readOnly
                               />
                             </span>
-                            
                           </div>
                           <div className="col-md-6">
                             <span className="woocommerce-input-wrapper">
@@ -120,7 +122,7 @@ const Booking = () => {
                                 type="text"
                                 className="theme-input-style"
                                 placeholder="Discount"
-                                value={data.discount+"%"}
+                                value={data.discount + "%"}
                                 readOnly
                               />
                             </span>
@@ -157,6 +159,7 @@ const Booking = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

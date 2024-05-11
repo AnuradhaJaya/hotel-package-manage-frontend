@@ -92,10 +92,10 @@ const AdminDeletePackage = ({ onClose, packageData, fetchData }) => {
     }
   };
   return (
-    <div className="fixed top-0 bottom-0 left-0 right-0 w-full h-full z-10 flex justify-center items-center bg-slate-200 bg-opacity-50">
-      <div className="bg-white p-3 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden">
-        <div className="flex justify-between items-center pb-3">
-          <h2 className="font-bold text-lg">Delete Package</h2>
+    <div className='fixed top-0 bottom-0 left-0 right-0 pt-5 pl-80 w-full h-full z-10 flex justify-left items-center bg-blue-200 bg-opacity-50'>
+      <div className='bg-white text-black p-4 rounded w-full max-w-2xl h-full max-h-[85%] overflow-hidden'>
+        <div className='flex justify-between items-center pb-3'>
+          <h2 className="font-bold text-lg">Delete </h2>
           <div
             className="w-fit ml-auto text-2xl hover:bg-red-600 aspect-square hover:text-white cursor-pointer"
             onClick={onClose}
@@ -274,14 +274,10 @@ const AdminDeletePackage = ({ onClose, packageData, fetchData }) => {
             className="p-2 bg-slate-100 border rounded"
             readOnly
           />
-          <button className="px-3 py-2 bg-rose-600 text-white hover:bg-rose-700">
+          <button className="px-3 py-2 bg-red-800 text-white hover:bg-rose-700">
             Delete
           </button>
         </form>
-
-
-
-
 
       </div>
       {/***display image full screen */}

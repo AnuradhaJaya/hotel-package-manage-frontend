@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useState } from "react";
+import "../assets/css/bootstrap.min.css";
+import "../assets/css/font-awesome.min.css";
+import "../assets/plugins/owl-carousel/owl.carousel.min.css";
+import "../assets/plugins/Magnific-Popup/magnific-popup.css";
+import "../assets/plugins/animate-css/animate.min.css";
+import "../assets/plugins/swiper/swiper.min.css";
+import "../assets/css/style.css";
+import "../assets/css/responsive.css";
+import "../assets/css/custom.css";
+import "../assets/css/Navbar.css";
 import logo2 from '../assets/img/logo2.png';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+    const [email, setEmail] = useState("");
+    const navigate = useNavigate();
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      // Here you can perform any necessary validation or processing of the email
+  
+      // Navigate to the "/send-email" route and pass the email as state
+      navigate("/send-email", { state: { email } });
+    };
+  
+    const handleEmailChange = (e) => {
+      setEmail(e.target.value);
+    };
     return (
-        <div className='pt-0'> 
-        <footer className="footer-type4">
+
+        <footer className="footer-type4 z-40">
             <div className="footer-top">
                 <div className="container">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -17,13 +42,24 @@ const Footer = () => {
                                 </Link>
                             </div>
                             <div className="footer-about-text">
-                                <p>Be the first to know New developments at the Hotel ElephantBay !</p>
+                                <p>Be the first to know New developments at the Hotel ElephantBay!</p>
                             </div>
                             <div className="footer-subscribe parsley-validate">
-                                <form action=" ">
-                                    <input type="email" className="theme-input-style" placeholder="your email here" required />
-                                    <button type="submit"><i className="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+
+                                <form onSubmit={handleSubmit}>
+                                    <input
+                                        type="email"
+                                        className="theme-input-style"
+                                        placeholder="your email here"
+                                        value={email}
+                                        onChange={handleEmailChange}
+                                        required
+                                    />
+                                    <button type="submit">
+                                        <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                    </button>
                                 </form>
+
                             </div>
                         </div>
                         {/* End of footer widget */}
@@ -35,7 +71,7 @@ const Footer = () => {
                             </div>
                             <div className="footer-links">
                                 <ul className="links-list">
-                                    <li><Link to=" ">About Our Company</Link></li>
+                                    <li><Link to=" ">About Our Hotel</Link></li>
                                     <li><Link to=" ">License</Link></li>
                                     <li><Link to=" ">Policy Privacy</Link></li>
                                     <li><Link to=" ">Terms of use</Link></li>
@@ -51,10 +87,10 @@ const Footer = () => {
                             </div>
                             <div className="footer-links">
                                 <ul className="links-list">
-                                    <li><Link to=" ">Rooms</Link></li>
-                                    <li><Link to=" ">Offers</Link></li>
-                                    <li><Link to=" ">Events</Link></li>
-                                    <li><Link to=" ">Location</Link></li>
+                                    <li><Link to="/rooms">Rooms</Link></li>
+                                    <li><Link to="/offers">Offers</Link></li>
+                                    <li><Link to="/events">Events</Link></li>
+                                    <li><Link to="/location">Location</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -112,7 +148,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
-        </div>
+
 
     );
 };
