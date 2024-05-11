@@ -27,7 +27,7 @@ const NavbarHook = () => {
       <ul className={listClassName}>
         <li>
           <NavLink to="/" className={linkClassName} onClick={closeMobileMenu}>
-            Home
+            Offers
           </NavLink>
         </li>
         <li>

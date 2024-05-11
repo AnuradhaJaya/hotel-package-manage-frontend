@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import SummaryApi from "../common";
 import { IoSearch } from "react-icons/io5";
 import SearchHorizontalPackage from "../components/SearchHorizontalPackage";
+import Header from "components/Header";
+import Footer from "components/Footer";
 
 const SearchPackage = () => {
   const query = useLocation();
@@ -46,7 +48,8 @@ const SearchPackage = () => {
 
   return (
     <div className="">
-      <section className="pt-100 pb-40">
+      <Header/>
+      <section className="pt-[200px] pb-40">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">

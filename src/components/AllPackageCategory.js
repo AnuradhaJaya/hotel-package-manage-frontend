@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import summaryApi from "../common";
 import STATUS from "../common/status";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const AllPackageCategory = () => {
   const [allPackage, setAllPackage] = useState([]);
-
+  const [activePackageCount, setActivePackageCount] = useState(0);
+  const [inactivePackageCount, setInactivePackageCount] = useState(0);
   const fetchAllPackage = async () => {
     try {
       const response = await fetch(summaryApi.allPackage.url);
       const dataResponse = await response.json();
       console.log("package data", dataResponse);
-      setAllPackage(dataResponse?.data || []);
+      const packages = dataResponse?.data || [];
+      setAllPackage(packages);
     } catch (error) {
       console.error("Error fetching all packages:", error);
     }
@@ -23,9 +26,10 @@ const AllPackageCategory = () => {
 
   return (
     <div>
-      {allPackage.map((pack, index) => {
-          const isEvenIndex = index % 2 === 0;
-          if (pack?.status === STATUS.Active) {
+      
+      {allPackage.filter(pack => pack?.status === STATUS.Active).
+      map((pack, index) => {
+        const isEvenIndex = index % 2 === 0;
           return (
             <div key={index}>
               {isEvenIndex ? (
@@ -42,7 +46,8 @@ const AllPackageCategory = () => {
                         <div className="post-info">
                           <ul className="list-unstyled mb-0">
                             <li>
-                              {pack.endDate} - {pack.endDate}
+                              {moment(pack?.createAt).format("LL")} -{" "}
+                              {moment(pack?.endDate).format("LL")}
                             </li>
                           </ul>
                         </div>
@@ -96,7 +101,8 @@ const AllPackageCategory = () => {
                         <div className="post-info">
                           <ul className="list-unstyled mb-0">
                             <li>
-                              {pack.endDate} - {pack.endDate}
+                              {moment(pack?.createAt).format("LL")} -{" "}
+                              {moment(pack?.endDate).format("LL")}
                             </li>
                           </ul>
                         </div>
@@ -124,10 +130,8 @@ const AllPackageCategory = () => {
                 </div>
               )}
             </div>
-          );
-        } else {
-          return null; // Skip rendering if status is not Active
-        }
+          )
+
       })}
     </div>
   );

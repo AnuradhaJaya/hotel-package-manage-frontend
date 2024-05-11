@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import summaryApi from '../common'
 import { toast } from 'react-toastify'
 import moment from 'moment'
-import { BiSolidEditAlt } from "react-icons/bi";
+import { BiEdit } from 'react-icons/bi';
+
+// Now you can use <BiEdit /> wherever you need the edit icon
+
 import { MdDeleteForever } from "react-icons/md";
 import ChangeUserRole from '../components/ChangeUserRole';
 
@@ -37,8 +40,8 @@ const AllUser = () => {
     fetchAllUsers()
   },[])
   return (
-    <div  className=' bg-white pt-4 pl-4'>
-      <table className='w-full userTable'>
+    <div  className='white pt-24 pl-4'>
+      <table className='w-full userTable  text-navy-600 dark:text-white'>
         <thead>
           <th>SeriNo</th>
           <th>Name</th>
@@ -58,7 +61,7 @@ const AllUser = () => {
                   <td>{el?.role}</td>
                   <td>{moment(el?.createdAt).format('LL')}</td>
                   <td>
-                    <button className=' cursor-pointer  text-2xl hover:text-green-700 hover:scale-115 '
+                    <button className=' cursor-pointer  text-3xl text-green-700 hover:text-green-700 hover:scale-115 '
                     onClick={()=>{
                       setUpdateUserDetails(el)
                       setOpenUpdateRole(true)
@@ -66,11 +69,11 @@ const AllUser = () => {
 
                     }}
                     >
-                    <BiSolidEditAlt/>
+                    <BiEdit/>
                     </button>
                   </td>
                   <td>
-                    <button className='cursor-pointer text-2xl hover:text-red-500 hover:scale-115'>
+                    <button className='cursor-pointer text-3xl text-red-500 hover:text-red-700 hover:scale-115'>
                     <MdDeleteForever/>
                     </button>
                   </td>

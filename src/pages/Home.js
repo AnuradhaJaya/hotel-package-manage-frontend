@@ -1,86 +1,113 @@
-import React from "react";
-import bg from "../assets/img/pattern2.png";
-import CategoryList from "../components/CategoryList";
-import AllPackageCategory from "../components/AllPackageCategory";
-import PackageSidebar from "../components/PackageSidebar";
+import React, { useEffect, useState } from 'react';
+import summaryApi from '../common';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
+import Header from '../components/Header.js';
+import Footer from '../components/Footer.js';
+//import Hero from 'components/Hero.js';
 
-const Home = () => {
+function Home() {
+  const [feedbacks, setFeedbacks] = useState([]);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [searchDate, setSearchDate] = useState('');
+  const [deletefeedback, setDeleteFeedback] = useState(null);
+
+  const fetchFeedbacks = async () => {
+    try {
+      const fetchData = await fetch(summaryApi.get_feedback.url, {
+        method: summaryApi.get_feedback.method,
+        credentials: 'include'
+      });
+      const dataResponse = await fetchData.json();
+
+      if (dataResponse.success) {
+        setFeedbacks(dataResponse.data);
+      }
+      if (dataResponse.error) {
+        toast.error(dataResponse.message);
+      }
+    } catch (error) {
+      console.error('Error fetching feedbacks:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchFeedbacks();
+  }, []);
+
+  const handleSearchDateChange = (e) => {
+    setSearchDate(e.target.value);
+  };
+
+  const filteredFeedbacks = searchDate
+    ? feedbacks.filter(feedback => new Date(feedback.date).toISOString().split('T')[0] === searchDate)
+    : feedbacks;
+
+  const generateStars = (rating, minRating) => {
+    const stars = [];
+    if (rating > minRating) {
+      for (let i = 0; i < rating; i++) {
+        stars.push(<span key={i} className="star text-yellow-500">★</span>);
+      }
+    }
+    return stars;
+  };
+
   return (
-    <div>
-      <section className="page-title-inner" data-bg-img={bg}>
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              {/* page title inner */}
-              <div className="page-title-wrap">
-                <div className="page-title-heading">
-                  <h1 className="h2">
-                    Limited<span>Offers</span>
-                  </h1>
-                </div>
-                <ul className="list-unstyled mb-0">
-                  <li>
-                    <a href=" ">home</a>
-                  </li>
-                  <li className="active">
-                    <a href=" ">Offers</a>
-                  </li>
-                </ul>
+    <>
+      <Header />
+      {/* <Hero /> */}
+      <div className="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center ">
+        <div className="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
+          <div className="w-full max-w-6xl mx-auto">
+            <div className="text-center max-w-xl mx-auto">
+              <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600">What people <br />are saying.</h1>
+              <h3 className="text-xl mb-5 font-light"></h3>
+              <div className="text-center mb-10">
+                <span className="inline-block w-1 h-1 rounded-full bg-navy-600 ml-1"></span>
+                <span className="inline-block w-3 h-1 rounded-full bg-navy-600 ml-1"></span>
+                <span className="inline-block w-40 h-1 rounded-full bg-navy-600"></span>
+                <span className="inline-block w-3 h-1 rounded-full bg-navy-600 ml-1"></span>
+                <span className="inline-block w-1 h-1 rounded-full bg-navy-600 ml-1"></span>
               </div>
-              {/* End of page title inner */}
+            </div>
+            <div className="mx-3 md:flex items-start">
+              {filteredFeedbacks.map((data, index) => {
+                if (data.rating > 4) {
+                  return (
+                    <div className="px-3 md:w-1/3" key={index}>
+                      <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                        <div className="w-full flex mb-4 items-center">
+                          <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                            <img src="https://i.pravatar.cc/100?img=1" alt="" />
+                          </div>
+                          <div className="flex-grow pl-3">
+                            <h6 className="font-bold text-base uppercase text-gray-600">{data?.name}</h6>
+                            <h6 className="font-bold text-sm uppercase text-gray-600">{generateStars(data?.rating)}</h6>
+                          </div>
+                          <div className="flex-grow pl-4 mb-4">
+                            <h6 className="font-bold text-xs uppercase text-gray-600">{moment(data?.createdAt).format('LL')}</h6>
+                          </div>
+                        </div>
+                        <div className="w-full">
+                          <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>{data?.suggestions}<span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span></p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="pt-100 pb-100">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-9">
-              <div className="row">
-                <div className="col-lg-12">
-                  <AllPackageCategory />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-12">
-                  {/* blog pagination */}
-                  {/* <div className="blog-pagination-wrap">
-                    <ul className="pagination blog-pagination list-unstyled">
-                      <li className="disabled">
-                        <a href=" ">
-                          <i className="fa fa-angle-left"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href=" ">01</a>
-                      </li>
-                      <li className="active">
-                        <a href=" ">02</a>
-                      </li>
-                      <li>
-                        <a href=" ">03</a>
-                      </li>
-                      <li>
-                        <a href=" ">04</a>
-                      </li>
-                      <li>
-                        <a href=" ">
-                          <i className="fa fa-angle-right"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div> */}
-                  {/* End of blog pagination */}
-                </div>
-              </div>
-            </div>
-            <PackageSidebar/>
-          </div>
-        </div>
-      </section>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
-};
+}
 
 export default Home;

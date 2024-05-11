@@ -3011,7 +3011,7 @@ label input[type=radio] {
     position: absolute;
     top: 0;
     left: 0;
-    background: url();
+    /* background: url() */
     z-index: -1;
     opacity: .5;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";

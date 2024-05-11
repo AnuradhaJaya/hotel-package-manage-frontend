@@ -10,8 +10,7 @@ import "../assets/css/responsive.css";
 import "../assets/css/custom.css";
 import "../assets/css/Navbar.css";
 import logo2 from "../assets/img/logo2.png";
-import { BsSearch } from "react-icons/bs";
-import { FaRegCircleUser } from "react-icons/fa6";
+import { FaRegUserCircle } from "react-icons/fa";
 import { MdShoppingCart } from "react-icons/md";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { Link, useNavigate, NavLink } from "react-router-dom";
@@ -59,229 +58,140 @@ const Header = () => {
   };
 
   return (
-    // <header className='h-16 shadow-md bg-white fixed w-full z-40'>
-    //     <div className='container mx-auto h-full min-w-full flex items-center px-4 justify-between'>
-    //         <div className='w={90} h={50}'>
-    //             <Link to={"/"}>
-    //                 <img className='w-72 max-w-max' src={logo2} data-rjs="2" alt="ecommerce" />
-    //             </Link>
-    //         </div>
-    //          <div className="col-6 col-sm-6 col-md-6 col-lg-7 col-xl-6">
-    //             <div className="menu-container">
-    //                 <div className="menu-wraper">
-    //                     <nav>
-    //                         <div className="header-menu dosis">
-    //                             <div id="menu-button"><i className="fa fa-bars"></i></div>
-    //                             <ul>
-    //                                 <li><a href=" ">Home</a></li>
-    //                                 <li><a href=" ">Room</a></li>
-    //                                 <li><a href=" ">Event</a></li>
-    //                                 <li class="active"><a href=" ">Offers</a></li>
-    //                                 <li><a href="">Contact</a></li>
-    //                             </ul>
-    //                         </div>
-    //                     </nav>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //         {/* <div className="hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow-md pl-2" title="search">
-    //             <input type='text' className='w-full outline-none ' placeholder='Search item here...' />
-    //             <div className='text-lg min-w-[50px] h-8 bg-black flex items-center justify-center rounded-r-full text-white'>
-    //             <BsSearch />
-    //             </div>
-    //         </div> */}
-    //         <div className="col-12 col-sm-12 col-md-3 top-order">
-    //             <div className="modal-menu-container">
-    //                 <ul className="list-unstyled mb-0">
-    //                     <li>
+      <header className="header h-20 shadow-md bg-white fixed w-full z-40">
+        <nav className="nav container mx-auto h-full min-w-full flex items-center px-5">
+          <div className="-ml-12 -mt-20">
+            <Link to={"/"}>
+              <img
+                className="w-72 max-w-max "
+                src={logo2}
+                data-rjs="2"
+                alt="ecommerce"
+              />
+            </Link>
+          </div>
 
-    //                         <div className='relative flex justify-center'>
-    //                         {
-    //                             user?._id && (
-    //                             <div className='text-4xl cursor-pointer relative flex justify-center' onClick={()=>setMenuDisplay(preve => !preve)}>
-    //                                 {
-    //                                     user?.profilepic ? (
-    //                                         <img src={user?.profilepic} className='w-10 h-10 rounded-full' alt={user?.name}/>
-
-    //                                     ) : (
-    //                                         <FaRegCircleUser />
-    //                                     )
-    //                                 }
-    //                             </div>
-    //                             )
-    //                         }
-    //                         </div>
-    //                         {menuDisplay && (
-    //                             <div className='absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded opacity-60'>
-    //                                 <nav>
-    //                                     {
-    //                                         user?.role === ROLE.ADMIN && (
-    //                                             <Link to={"admin-panel/all-packages"} className='whitespace-nowrap hidden md:block hover:text-black p-2' onClick={() => setMenuDisplay(prev => !prev)}>Admin</Link>
-    //                                         )
-    //                                     }
-    //                                 </nav>
-    //                             </div>
-    //                         )}
-    //                     </li>
-    //                     <li>
-    //                         <div className="text-3xl relative" title="Cart list">
-    //                             <span className='text-black cursor-pointer'>
-    //                                 <MdShoppingCart />
-    //                             </span>
-    //                             <div className='bg-red-700 text-yellow-50 w-5  h-5 rounded-full p-0 flex  justify-center absolute -top-2 -right-1'>
-    //                                 <p className='text-sm '>0</p>
-    //                             </div>
-    //                         </div>
-    //                     </li>
-    //                     <li>
-    //                         <div>
-    //                             {user?._id ? (
-    //                                 <button onClick={handleLogout} className="px-4 py-2 bg-black text-white rounded-sm hover:bg-neutral-800 scale-110 ">Logout</button>
-    //                             ) : (
-    //                                 <Link to={"/login"} className="px-4 py-3.5 bg-black text-white rounded-sm hover:bg-neutral-800 scale-110 " title="Login">Login</Link>
-    //                             )}
-    //                         </div>
-    //                     </li>
-    //                 </ul>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </header>
-
-    <header className="header h-20 shadow-md bg-white fixed w-full z-40">
-      <nav className="nav container mx-auto h-full min-w-full flex items-center px-4">
-        <div className="-ml-12 -mt-20">
-          <Link to={"/"}>
-            <img
-              className="w-72 max-w-max "
-              src={logo2}
-              data-rjs="2"
-              alt="ecommerce"
-            />
-          </Link>
-        </div>
-
-        <div
-          className={`nav__menu ${showMenu ? "show-menu" : ""}`}
-          id="nav-menu"
-        >
-          <ul className="nav__list -mt-6">
-            <div className="header-menu text-5xl">
-              <ul>
-                <li onClick={closeMenuOnMobile}>
-                  <a href=" " className="cursor-pointer">
-                    Home
-                  </a>
-                </li>
-                <li onClick={closeMenuOnMobile}>
-                  <a href=" " className="cursor-pointer">
-                    Room
-                  </a>
-                </li>
-                <li onClick={closeMenuOnMobile}>
-                  <a href=" " className="cursor-pointer">
-                    Event
-                  </a>
-                </li>
-                <li onClick={closeMenuOnMobile} className="active">
-                  <a href=" " className="cursor-pointer">
-                    Offers
-                  </a>
-                </li>
-                <li onClick={closeMenuOnMobile}>
-                  <a href=" " className="cursor-pointer">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-12 col-sm-12 col-md-3 top-order">
-              <div className="modal-menu-container">
-                <ul className="list-unstyled mb-0">
-                  <li>
-                    <div className="relative flex justify-center">
-                      {user?._id && (
-                        <div
-                          className=" text-black text-4xl cursor-pointer relative flex justify-center"
-                          onClick={() => setMenuDisplay((preve) => !preve)}
-                        >
-                          {user?.profilepic ? (
-                            <img
-                              src={user?.profilepic}
-                              className="w-10 h-10 rounded-full"
-                              alt={user?.name}
-                            />
-                          ) : (
-                            <FaRegCircleUser />
-                          )}
-                        </div>
-                      )}
-                    </div>
-                    {menuDisplay && (
-                      <div className="absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded opacity-60">
-                        <nav>
-                          {user?.role === ROLE.ADMIN && (
-                            <Link
-                              to={"admin-panel/all-packages"}
-                              className="whitespace-nowrap hidden md:block hover:text-black p-2"
-                              onClick={() => setMenuDisplay((prev) => !prev)}
-                            >
-                              Admin
-                            </Link>
-                          )}
-                        </nav>
-                      </div>
-                    )}
+          <div
+            className={`nav__menu ${showMenu ? "show-menu" : ""}`}
+            id="nav-menu"
+          >
+            <ul className="nav__list -mt-6">
+              <div className="header-menu">
+                <ul>
+                  <li onClick={closeMenuOnMobile} className="active">
+                    <Link to={"/"} className="cursor-pointer">
+                      Home
+                    </Link>
                   </li>
-                  <li>
-                    <div className="text-3xl relative" title="Cart list">
-                      <span className="text-black cursor-pointer">
-                        <MdShoppingCart />
-                      </span>
-                      <div className="bg-red-700 text-yellow-50 w-5  h-5 rounded-full p-0 flex  justify-center absolute -top-2 -right-1">
-                        <p className="text-sm ">0</p>
-                      </div>
-                    </div>
+                  <li onClick={closeMenuOnMobile}>
+                    <Link to={"/room"} className="cursor-pointer">
+                      Room
+                    </Link>
                   </li>
-                  <li>
-                    <div>
-                      {user?._id ? (
-                        <button
-                          onClick={handleLogout}
-                          className="px-4 py-2 bg-black text-white rounded-sm hover:bg-neutral-800 scale-110 "
-                        >
-                          Logout
-                        </button>
-                      ) : (
-                        <Link
-                          to={"/login"}
-                          className="px-4 py-3.5 bg-black text-white rounded-sm hover:bg-neutral-800 scale-110 "
-                          title="Login"
-                        >
-                          Login
-                        </Link>
-                      )}
-                    </div>
+                  <li onClick={closeMenuOnMobile}>
+                    <Link to={"/event"} className="cursor-pointer">
+                      Event
+                    </Link>
+                  </li>
+                  <li onClick={closeMenuOnMobile} >
+                    <Link to={"/offers"} className="cursor-pointer">
+                      Offers
+                    </Link>
+                  </li>
+                  <li onClick={closeMenuOnMobile}>
+                    <Link to={"/"} className="cursor-pointer">
+                      Contact
+                    </Link>
                   </li>
                 </ul>
               </div>
-            </div>
-          </ul>
-          <div className="nav__close" id="nav-close" onClick={toggleMenu}>
-            <IoClose />
-          </div>
-        </div>
 
-        <div
-          className="nav__toggle -mt-20"
-          id="nav-toggle"
-          onClick={toggleMenu}
-        >
-          <IoMenu />
-        </div>
-      </nav>
-    </header>
+              <div className="col-12 col-sm-12 col-md-3 top-order">
+                <div className="modal-menu-container">
+                  <ul className="list-unstyled mb-0">
+                    <li>
+                      <div className="relative flex justify-center">
+                        {user?._id && (
+                          <div
+                            className=" text-black text-4xl cursor-pointer relative flex justify-center"
+                            onClick={() => setMenuDisplay((preve) => !preve)}
+                          >
+                            {user?.profilepic ? (
+                              <img
+                                src={user?.profilepic}
+                                className="w-10 h-10 rounded-full"
+                                alt={user?.name}
+                              />
+                            ) : (
+                              <FaRegUserCircle />
+                            )}
+                          </div>
+                        )}
+                      </div>
+                      {menuDisplay && (
+                        <div className="absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded opacity-60">
+                          <nav>
+                            {user?.role === ROLE.ADMIN && (
+                              <Link
+                                to={"/admin/default"}
+                                className="whitespace-nowrap hidden md:block hover:text-black p-2"
+                                onClick={() => setMenuDisplay((prev) => !prev)}
+                              >
+                                Admin
+                              </Link>
+                            )}
+                          </nav>
+                        </div>
+                      )}
+                    </li>
+                    <li>
+                      <div className="text-3xl relative" title="Cart list">
+                        <span className="text-black cursor-pointer">
+                          <MdShoppingCart />
+                        </span>
+                        <div className="bg-red-700 text-yellow-50 w-5 h-5 rounded-full p-0 flex justify-center absolute -top-2 -right-1">
+                          <p className="text-sm">0</p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        {user?._id ? (
+                          <button
+                            onClick={handleLogout}
+                            className="px-4 py-2 bg-black text-white rounded-sm hover:bg-neutral-800 scale-110 "
+                          >
+                            Logout
+                          </button>
+                        ) : (
+                          <Link
+                            to={"/login"}
+                            className="px-4 py-3.5 bg-black text-white rounded-sm hover:bg-neutral-800 scale-110 "
+                            title="Login"
+                          >
+                            Login
+                          </Link>
+                        )}
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </ul>
+            <div className="nav__close" id="nav-close" onClick={toggleMenu}>
+              <IoClose />
+            </div>
+          </div>
+
+          <div
+            className="nav__toggle -mt-20"
+            id="nav-toggle"
+            onClick={toggleMenu}
+          >
+            <IoMenu />
+          </div>
+        </nav>
+      </header>
   );
 };
 
