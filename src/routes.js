@@ -58,7 +58,7 @@ const routes = [
   {
     name: "Feedbacks",
     layout: "/admin",
-    path: "feedback-detail",
+    path: "all-feedback",
     icon: <MdAssignment  className="h-6 w-6" />,
     // component: <Feedback />,
     secondary: true,

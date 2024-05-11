@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
+import Home from "pages/Home";
 import Offers from "../pages/Offers";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
@@ -14,7 +15,9 @@ import UsersDetail from "../pages/AllUser";
 import OffersDetail from "../pages/AllPackages";
 import SendEmail from "../pages/SendEmail"
 import Email from "../views/admin/email/index"
-import Home from "pages/Home";
+import FeedbackForm from "pages/FeedbackForm";
+import Feedback from "../views/admin/feedback/feedbackList"
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -60,6 +63,10 @@ const router = createBrowserRouter([
         path: "send-email/",
         element: <SendEmail />,
       },
+      {
+        path: "feedback/",
+        element: <FeedbackForm />,
+      },
       // admin panel
       {
         path: "admin",
@@ -81,6 +88,10 @@ const router = createBrowserRouter([
             path: "email-marketing",
             element: <Email />,
           },
+           {
+             path: "all-feedback",
+             element: <Feedback />,
+           },
         ],
       },
 

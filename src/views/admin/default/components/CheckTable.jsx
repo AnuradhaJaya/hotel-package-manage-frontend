@@ -1,131 +1,118 @@
 import React, { useMemo } from "react";
-import CardMenu from "../../../../components/card/CardMenu";
-import Checkbox from "../../../../components/checkbox";
-import Card from "../../../../components/card";
+import Card from "components/card";
+import SummaryApi from "../../../../common"
+import { useEffect, useState } from "react";
+import { TbMessage } from "react-icons/tb";
+import SendEmailMessage from "../../email/components/SendEmailMessage";
+import moment from "moment";
 
-import {
-  useGlobalFilter,
-  usePagination,
-  useSortBy,
-  useTable,
-} from "react-table";
 
 const CheckTable = (props) => {
-  const { columnsData, tableData } = props;
+  const [allEmail, setAllEmail] = useState([]);
+  const [openSendMessage, setOpenSendMessage] = useState(false);
+  const fetchAllEmails = async () => {
+    try {
+      const response = await fetch(SummaryApi.get_emails.url);
+      const dataResponse = await response.json();
+      console.log("email data", dataResponse);
+      setAllEmail(dataResponse?.data || []);
+    } catch (error) {
+      console.error("Error fetching all emails:", error);
+    }
+  };
 
-  const columns = useMemo(() => columnsData, [columnsData]);
-  const data = useMemo(() => tableData, [tableData]);
-
-  const tableInstance = useTable(
-    {
-      columns,
-      data,
-    },
-    useGlobalFilter,
-    useSortBy,
-    usePagination
-  );
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    page,
-    prepareRow,
-    initialState,
-  } = tableInstance;
-  initialState.pageSize = 11;
+  useEffect(() => {
+    fetchAllEmails();
+  }, []);
 
   return (
-    <Card extra={"w-full h-full sm:overflow-auto px-6"}>
-      <header className="relative flex items-center justify-between pt-4">
-        <div className="text-xl font-bold text-navy-700 dark:text-white">
-          Check Table
+        <div className="">
+          <Card  extra={"w-full h-full px-6 pb-6 sm:overflow-x-auto"}>
+            {/* Top Creator Header */}
+            <div className="relative flex items-center justify-between pt-4">
+              <h4 className="text-lg font-bold text-navy-700 dark:text-white">
+                Send Email
+              </h4>
+              <button className="linear rounded-[20px] bg-lightPrimary px-4 py-2 text-base font-medium text-brand-500 transition duration-200 hover:bg-gray-100 active:bg-gray-200 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:active:bg-white/20">
+                See all
+              </button>
+            </div>
+            {/* Top Creator Heading */}
+            <div className="w-full overflow-x-scroll px-4 md:overflow-x-hidden">
+              <table
+
+                className="w-full min-w-[500px] overflow-x-scroll"
+              >
+                <thead>
+
+                  <tr>
+                    <th>
+                      <div className="flex items-center justify-between pt-4 pb-2 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
+                        Name
+                      </div>
+                    </th>
+                    <th>
+                      <div className="flex items-center justify-between pt-4 pb-2 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
+                        Email
+                      </div>
+                    </th>
+                    <th>
+                      <div className="flex items-center justify-between pt-4 pb-2 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
+                        Phone
+                      </div>
+                    </th>
+                    <th>
+                      <div className="flex items-center justify-between pt-4 pb-2 text-start uppercase tracking-wide text-gray-600 sm:text-xs lg:text-xs">
+                        Send Date
+                      </div>
+                    </th>
+                  </tr>
+
+                </thead>
+
+                <tbody className="px-4">
+                  {allEmail.map((data, index) => (
+                    <tr>
+                      <td>
+                        <p className="text-md font-medium text-navy-600 dark:text-white">
+                          {data?.firstName}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="text-md font-medium text-navy-600  dark:text-white">
+                          {data?.email}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="text-md font-medium text-navy-600  dark:text-white">
+                          {data?.phone}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="text-md font-medium text-navy-600  dark:text-white">
+                          {moment(data?.createdAt).format('LL')}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="text-2xl font-bold   text-navy-400 hover:scale-105 hover:text-cyan-500 dark:text-white" onClick={() => setOpenSendMessage(data)}>
+                          <TbMessage />
+                        </p>
+                      </td>
+                    </tr>
+                  ))}
+                  {openSendMessage && (
+                    <SendEmailMessage
+                      onClose={() => setOpenSendMessage(null)}
+                      emailData={openSendMessage}
+                      fetchData={fetchAllEmails}
+                    />
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </Card>
         </div>
 
-        <CardMenu />
-      </header>
-
-      <div className="mt-8 overflow-x-scroll xl:overflow-x-hidden">
-        <table
-          {...getTableProps()}
-          className="w-full"
-          variant="simple"
-          color="gray-500"
-          mb="24px"
-        >
-          <thead>
-            {headerGroups.map((headerGroup, index) => (
-              <tr {...headerGroup.getHeaderGroupProps()} key={index}>
-                {headerGroup.headers.map((column, index) => (
-                  <th
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className="border-b border-gray-200 pr-16 pb-[10px] text-start dark:!border-navy-700"
-                    key={index}
-                  >
-                    <div className="text-xs font-bold tracking-wide text-gray-600 lg:text-xs">
-                      {column.render("Header")}
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {page.map((row, index) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()} key={index}>
-                  {row.cells.map((cell, index) => {
-                    let data = "";
-                    if (cell.column.Header === "NAME") {
-                      data = (
-                        <div className="flex items-center gap-2">
-                          <Checkbox />
-                          <p className="text-sm font-bold text-navy-700 dark:text-white">
-                            {cell.value[0]}
-                          </p>
-                        </div>
-                      );
-                    } else if (cell.column.Header === "PROGRESS") {
-                      data = (
-                        <div className="flex items-center">
-                          <p className="text-sm font-bold text-navy-700 dark:text-white">
-                            {cell.value}%
-                          </p>
-                        </div>
-                      );
-                    } else if (cell.column.Header === "QUANTITY") {
-                      data = (
-                        <p className="text-sm font-bold text-navy-700 dark:text-white">
-                          {" "}
-                          {cell.value}{" "}
-                        </p>
-                      );
-                    } else if (cell.column.Header === "DATE") {
-                      data = (
-                        <p className="text-sm font-bold text-navy-700 dark:text-white">
-                          {cell.value}
-                        </p>
-                      );
-                    }
-                    return (
-                      <td
-                        {...cell.getCellProps()}
-                        key={index}
-                        className="pt-[14px] pb-[16px] sm:text-[14px]"
-                      >
-                        {data}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </Card>
   );
 };
 

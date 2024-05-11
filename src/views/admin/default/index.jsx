@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from "react";
 import summaryApi from "../../../common";
 import STATUS from "../../../common/status";
-import { Link } from "react-router-dom";
-
 import MiniCalendar from "../../../components/calendar/MiniCalendar";
 import WeeklyRevenue from "./components/WeeklyRevenue";
 import TotalSpent from "./components/TotalSpent";
-import PieChartCard from "./components/PieChartCard";
-import { IoMdHome } from "react-icons/io";
-//import { IoDocuments } from "react-icons/io5";
-import { MdBarChart, MdDashboard } from "react-icons/md";
 import { IoMdGift } from "react-icons/io";
-import { columnsDataCheck, columnsDataComplex } from "./variables/columnsData";
-
+import {  columnsDataComplex } from "./variables/columnsData";
+import { IoMdCloudDownload } from "react-icons/io";
 import Widget from "../../../components/widget/Widget";
 import CheckTable from "./components/CheckTable";
-import ComplexTable from "./components/ComplexTable";
 import DailyTraffic from "./components/DailyTraffic";
-import TaskCard from "./components/TaskCard";
-import tableDataCheck from "./variables/tableDataCheck.json";
 import tableDataComplex from "./variables/tableDataComplex.json";
 
 const Dashboard = () => {
@@ -71,12 +62,12 @@ const Dashboard = () => {
           title={"Deactivated Offers"}
           subtitle={inactivePackageCount}
         />
-        {/* <Widget
-          icon={<MdDashboard className="h-6 w-6" />}
-          title={"Your Balance"}
-          subtitle={"$1,000"}
+         <Widget
+          icon={<IoMdCloudDownload className="h-10 w-10" />}
+          title={"Download PDF"}
+          subtitle={""}
         />
-        <Widget
+        {/*<Widget
           icon={<MdBarChart className="h-7 w-7" />}
           title={"New Tasks"}
           subtitle={"145"}
@@ -99,7 +90,7 @@ const Dashboard = () => {
 
       <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
         {/* Check Table */}
-        <ComplexTable
+        <CheckTable
           columnsData={columnsDataComplex}
           tableData={tableDataComplex}
         />

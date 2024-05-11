@@ -7,7 +7,7 @@ import Card from "components/card";
 import SummaryApi from "../../../common";
 import { useEffect, useState } from "react";
 import { TbMessage } from "react-icons/tb";
-import SendEmailMessage from "components/SendEmailMessage";
+import SendEmailMessage from "./components/SendEmailMessage";
 import moment from "moment";
 const Marketplace = () => {
   const [allEmail, setAllEmail] = useState([]);
@@ -77,42 +77,42 @@ const Marketplace = () => {
                 </thead>
 
                 <tbody className="px-4">
-                {allEmail.map((data, index) => (
-                      <tr>                          
-                            <td>
-                              <p className="text-md font-medium text-navy-600 dark:text-white">
-                                {data?.firstName}
-                              </p>  
-                            </td>
-                            <td>
-                              <p className="text-md font-medium text-navy-600  dark:text-white">
-                                {data?.email}
-                              </p>  
-                            </td>
-                            <td>
-                              <p className="text-md font-medium text-navy-600  dark:text-white">
-                                {data?.phone}
-                              </p>  
-                            </td>
-                            <td>
-                              <p className="text-md font-medium text-navy-600  dark:text-white">
-                                {moment(data?.createdAt).format('LL')}
-                              </p>  
-                            </td>
-                            <td>
-                              <p className="text-2xl font-bold   text-navy-400 hover:scale-105 hover:text-cyan-500 dark:text-white" onClick={() => setOpenSendMessage(data)}>
-                              <TbMessage />
-                              </p>  
-                            </td>                                             
-                      </tr>
-                      ))} 
-                                                   {openSendMessage && (
-                            <SendEmailMessage
-                              onClose={() => setOpenSendMessage(null)}
-                              emailData={openSendMessage}
-                              fetchData={fetchAllEmails}
-                            />
-                          )} 
+                  {allEmail.map((data, index) => (
+                    <tr>
+                      <td>
+                        <p className="text-md font-medium text-navy-600 dark:text-white">
+                          {data?.firstName}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="text-md font-medium text-navy-600  dark:text-white">
+                          {data?.email}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="text-md font-medium text-navy-600  dark:text-white">
+                          {data?.phone}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="text-md font-medium text-navy-600  dark:text-white">
+                          {moment(data?.createdAt).format('LL')}
+                        </p>
+                      </td>
+                      <td>
+                        <p className="text-2xl font-bold   text-navy-400 hover:scale-105 hover:text-cyan-500 dark:text-white" onClick={() => setOpenSendMessage(data)}>
+                          <TbMessage />
+                        </p>
+                      </td>
+                    </tr>
+                  ))}
+                  {openSendMessage && (
+                    <SendEmailMessage
+                      onClose={() => setOpenSendMessage(null)}
+                      emailData={openSendMessage}
+                      fetchData={fetchAllEmails}
+                    />
+                  )}
                 </tbody>
               </table>
             </div>

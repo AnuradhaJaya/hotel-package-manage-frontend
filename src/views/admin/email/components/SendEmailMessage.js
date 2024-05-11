@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import SummaryApi from '../common';
+import SummaryApi from '../../../../common';
 import { toast } from "react-toastify";
 
 const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
@@ -15,45 +15,78 @@ const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setData({ ...data, [name]: value });
+    if (name === 'subject') {
+      // Find the selected package based on the title
+      const selectedPackage = allPackage.find(packa => packa.title === value);
+      // Update the data with the selected package's description
+      setData({ ...data, [name]: value, message: selectedPackage ? selectedPackage.description : '' });
+    } else {
+      setData({ ...data, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        // Send email
-        const emailResponse = await fetch(SummaryApi.send_email_message.url, {
-            method: SummaryApi.send_email_message.method,
-            credentials: 'include',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-        // Store email data in database
-        const storeResponse = await fetch(SummaryApi.store_email.url, {
-            method: SummaryApi.store_email.method,
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+      // Send email
+      const emailResponse = await fetch(SummaryApi.send_email_message.url, {
+        method: SummaryApi.send_email_message.method,
+        credentials: 'include',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      // Store email data in database
+      const storeResponse = await fetch(SummaryApi.store_email.url, {
+        method: SummaryApi.store_email.method,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
 
-        const emailData = await emailResponse.json();
-        const storeData = await storeResponse.json();
+      const emailData = await emailResponse.json();
+      const storeData = await storeResponse.json();
 
-        if ( storeData.success && emailData.success) {// &&
-            toast.success("Email sent and stored successfully.");
-            onClose();
-            fetchData(); // If fetchData is a function to fetch updated data
-        } else {
-            toast.error("Failed to send email or store data.");
-        }
+      if (storeData.success && emailData.success) {// &&
+        toast.success("Email sent and stored successfully.");
+        onClose();
+        fetchData(); // If fetchData is a function to fetch updated data
+      } else {
+        toast.error("Failed to send email or store data.");
+      }
     } catch (error) {
-        console.error("Error:", error);
-        toast.error("An unexpected error occurred.");
+      console.error("Error:", error);
+      toast.error("An unexpected error occurred.");
     }
   };
+
+  //select subject and message
+  const [allPackage, setAllPackage] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const categoryLoading = new Array(5).fill(null);
+
+  const fetchAllPackage = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(SummaryApi.allPackage.url);
+      const dataResponse = await response.json();
+      console.log("package data", dataResponse);
+      setAllPackage(dataResponse?.data || []);
+    } catch (error) {
+      console.error("Error fetching all packages:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllPackage();
+  }, []);
+
+ 
 
   return (
     <div>
@@ -113,7 +146,7 @@ const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
                 <label className="block text-navy-600 text-sm font-bold mb-2" htmlFor="subject">
                   Subject
                 </label>
-                <input
+                {/* <input
                   className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="subject"
                   type="text"
@@ -122,7 +155,26 @@ const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
                   value={data.subject}
                   onChange={handleInputChange}
                   required
-                />
+                /> */}
+                <select
+                  className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="subject"
+                  name="subject"
+                  placeholder="Enter the subject here..."
+                  value={data.subject}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option value={""}>subject</option>
+
+                  {
+                    allPackage.map((el, index) => {
+                      return (
+                        <option value={el.title} key={el.title + index}>{el.title}</option>
+                      )
+                    })
+                  }
+                </select>
               </div>
               <div className="mb-4">
                 <label className="block text-navy-600 text-sm font-bold mb-2" htmlFor="message">

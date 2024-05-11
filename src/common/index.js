@@ -77,6 +77,18 @@ const summaryApi = {
     url: `${backendDomin}/api/get-send-message`,
     method: "post",
   },
+  send_feedback: {
+    url: `${backendDomin}/api/add-feedback`,
+    method: "post",
+  },
+  get_feedback: {
+    url: `${backendDomin}/api/get-feedback`,
+    method: "get",
+  },
+   delete_feedback: {
+     url: `${backendDomin}/api/delete-feedback`,
+     method: "post",
+   },
 };
 
 export default summaryApi;
