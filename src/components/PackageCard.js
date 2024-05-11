@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import fetchCategoryWisePackage from "../helpers/fetchCategoryWisePackage";
 import { Link } from "react-router-dom";
 import STATUS from "../common/status";
+import moment from "moment";
 
 const PackageCard = ({ category }) => {
   const [data, setData] = useState([]);
@@ -55,8 +56,7 @@ const PackageCard = ({ category }) => {
                                         className="btn btn-line   bg-slate-50"
                                       ></Link>
                                       <div className="single-reply-comment">
-                                        <a href="#">
-                                        </a>
+                                        <a href="#"></a>
                                       </div>
                                     </div>
                                   </div>
@@ -97,8 +97,7 @@ const PackageCard = ({ category }) => {
                                         className="btn btn-line   bg-slate-50"
                                       ></Link>
                                       <div className="single-reply-comment">
-                                        <a href="#">
-                                        </a>
+                                        <a href="#"></a>
                                       </div>
                                     </div>
                                   </div>
@@ -120,117 +119,120 @@ const PackageCard = ({ category }) => {
                     );
                   })
                 : data.map((pack, index) => {
-                  if (pack?.status === STATUS.Active) {
-                    const isEvenIndex = index % 2 === 0;
-                    return (
-                      <div key={index}>
-                        {isEvenIndex ? (
-                          // View 1
-                          <div className=" single-blog-wrap type3">
-                            <div className="row align-items-center">
-                              <div className="col-md-7 col-lg-8">
-                                {/* single blog post details */}
-                                <div className="single-post-details left-content">
-                                  <p>#{pack.category}</p>
-                                  <h3>
-                                    <a href="#">{pack.packtName}</a>
-                                  </h3>
-                                  <div className="post-info">
-                                    <ul className="list-unstyled mb-0">
-                                      <li>
-                                        {pack.endDate} - {pack.endDate}
-                                      </li>
-                                    </ul>
+                    if (pack?.status === STATUS.Active) {
+                      const isEvenIndex = index % 2 === 0;
+                      return (
+                        <div key={index}>
+                          {isEvenIndex ? (
+                            // View 1
+                            <div className=" single-blog-wrap type3">
+                              <div className="row align-items-center">
+                                <div className="col-md-7 col-lg-8">
+                                  {/* single blog post details */}
+                                  <div className="single-post-details left-content">
+                                    <p>#{pack.category}</p>
+                                    <h3>
+                                      <a href="#">{pack.packtName}</a>
+                                    </h3>
+                                    <div className="post-info">
+                                      <ul className="list-unstyled mb-0">
+                                        <li>
+                                          {moment(data.createAt).format("LL")} -{" "}
+                                          {moment(data.endDate).format("LL")}
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div className="post-body">
+                                      <p className="text-ellipsis line-clamp-3">
+                                        {pack.title}
+                                      </p>
+                                      <div className="reading-and-reply d-flex align-items-center justify-content-between">
+                                        <Link
+                                          to={
+                                            "package-category-details/" +
+                                            pack._id
+                                          }
+                                          className="btn btn-line"
+                                        >
+                                          View Details...
+                                        </Link>
+                                        <div className="single-reply-comment">
+                                          <a href="#">
+                                            <i className="fa fa-comment-o"></i>5
+                                          </a>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div className="post-body">
-                                    <p className="text-ellipsis line-clamp-3">
-                                      {pack.title}
-                                    </p>
-                                    <div className="reading-and-reply d-flex align-items-center justify-content-between">
-                                      <Link
-                                        to={
-                                          "package-category-details/" + pack._id
-                                        }
-                                        className="btn btn-line"
-                                      >
-                                        View Details...
-                                      </Link>
-                                      <div className="single-reply-comment">
-                                        <a href="#">
-                                          <i className="fa fa-comment-o"></i>5
-                                        </a>
+                                </div>
+                                <div className="col-md-5 col-lg-4 order-first order-md-last">
+                                  {/* single blog image */}
+                                  <Link
+                                    to={"package-category-details/" + pack._id}
+                                    className="w-[300px] h-[200px] single-blog-image hover-effect"
+                                  >
+                                    <img src={pack.packImage} alt="" />
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            // View 2
+                            <div className="single-blog-wrap type3">
+                              <div className="row align-items-center">
+                                <div className="col-md-5 col-lg-4">
+                                  {/* single blog image */}
+                                  <Link
+                                    to={"package-category-details/" + pack._id}
+                                    className=" single-blog-image hover-effect"
+                                  >
+                                    <img src={pack.packImage} alt="" />
+                                  </Link>
+                                </div>
+                                <div className="col-md-7 col-lg-8">
+                                  {/* single blog post details */}
+                                  <div className="single-post-details right-content">
+                                    <p>#{pack.category}</p>
+                                    <h3>
+                                      <a href="#">{pack.packtName}</a>
+                                    </h3>
+                                    <div className="post-info">
+                                      <ul className="list-unstyled mb-0">
+                                        <li>
+                                          {moment(data.createAt).format("LL")} -{" "}
+                                          {moment(data.endDate).format("LL")}
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div className="post-body">
+                                      <p className="text-ellipsis line-clamp-3">
+                                        {pack.title}
+                                      </p>
+                                      <div className="reading-and-reply d-flex align-items-center justify-content-between">
+                                        <Link
+                                          to={
+                                            "package-category-details/" +
+                                            pack._id
+                                          }
+                                          className="btn btn-line"
+                                        >
+                                          View Details...
+                                        </Link>
+                                        <div className="single-reply-comment">
+                                          <a href="#">
+                                            <i className="fa fa-comment-o"></i>4
+                                          </a>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              <div className="col-md-5 col-lg-4 order-first order-md-last">
-                                {/* single blog image */}
-                                <Link
-                                  to={"package-category-details/" + pack._id}
-                                  className="w-[300px] h-[200px] single-blog-image hover-effect"
-                                >
-                                  <img src={pack.packImage} alt="" />
-                                </Link>
-                              </div>
                             </div>
-                          </div>
-                        ) : (
-                          // View 2
-                          <div className="single-blog-wrap type3">
-                            <div className="row align-items-center">
-                              <div className="col-md-5 col-lg-4">
-                                {/* single blog image */}
-                                <Link
-                                  to={"package-category-details/" + pack._id}
-                                  className=" single-blog-image hover-effect"
-                                >
-                                  <img src={pack.packImage} alt="" />
-                                </Link>
-                              </div>
-                              <div className="col-md-7 col-lg-8">
-                                {/* single blog post details */}
-                                <div className="single-post-details right-content">
-                                  <p>#{pack.category}</p>
-                                  <h3>
-                                    <a href="#">{pack.packtName}</a>
-                                  </h3>
-                                  <div className="post-info">
-                                    <ul className="list-unstyled mb-0">
-                                      <li>
-                                        {pack.endDate} - {pack.endDate}
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div className="post-body">
-                                    <p className="text-ellipsis line-clamp-3">
-                                      {pack.title}
-                                    </p>
-                                    <div className="reading-and-reply d-flex align-items-center justify-content-between">
-                                      <Link
-                                        to={
-                                          "package-category-details/" + pack._id
-                                        }
-                                        className="btn btn-line"
-                                      >
-                                        View Details...
-                                      </Link>
-                                      <div className="single-reply-comment">
-                                        <a href="#">
-                                          <i className="fa fa-comment-o"></i>4
-                                        </a>
-        
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    )
-                  }
+                          )}
+                        </div>
+                      );
+                    }
                   })}
 
               {/* single blog post */}
