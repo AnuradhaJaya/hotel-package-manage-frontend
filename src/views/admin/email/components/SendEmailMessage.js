@@ -5,12 +5,6 @@ import SummaryApi from '../../../../common';
 import { toast } from "react-toastify";
 
 const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
-<<<<<<< Updated upstream
-=======
-  const [allPackage, setAllPackage] = useState([]);
-  const [loading, setLoading] = useState(false);
-
->>>>>>> Stashed changes
   const [data, setData] = useState({
     ...emailData,
     email: emailData?.email,
@@ -23,11 +17,7 @@ const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
     const { name, value } = e.target;
     if (name === 'subject') {
       // Find the selected package based on the title
-<<<<<<< Updated upstream
       const selectedPackage = allPackage.find(packa => packa.title === value);
-=======
-      const selectedPackage = allPackage.find(pack => pack.title === value);
->>>>>>> Stashed changes
       // Update the data with the selected package's description
       setData({ ...data, [name]: value, message: selectedPackage ? selectedPackage.description : '' });
     } else {
@@ -72,17 +62,12 @@ const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
     }
   };
 
-<<<<<<< Updated upstream
   //select subject and message
   const [allPackage, setAllPackage] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const categoryLoading = new Array(5).fill(null);
 
-=======
-
-  //get package details
->>>>>>> Stashed changes
   const fetchAllPackage = async () => {
     setLoading(true);
     try {
@@ -95,7 +80,6 @@ const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
     } finally {
       setLoading(false);
     }
-<<<<<<< Updated upstream
   };
 
   useEffect(() => {
@@ -103,13 +87,6 @@ const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
   }, []);
 
  
-=======
-  }
-
-  useEffect(() => {
-    fetchAllPackage();
-  }, [])
->>>>>>> Stashed changes
 
   return (
     <div>
@@ -165,7 +142,6 @@ const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
                   readOnly
                 />
               </div>
-<<<<<<< Updated upstream
               <div className="mb-4">
                 <label className="block text-navy-600 text-sm font-bold mb-2" htmlFor="subject">
                   Subject
@@ -215,65 +191,6 @@ const SendEmailMessage = ({ onClose, emailData, fetchData }) => {
                   required
                 />
               </div>
-=======
-
-              <div>
-
-                <div className="mb-4">
-                  <label className="block text-navy-600 text-sm font-bold mb-2" htmlFor="subject">
-                    Subject
-                  </label>
-                  {/* <input
-                          className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          id="subject"
-                          type="text"
-                          placeholder="Enter the subject here..."
-                          name="subject"
-                          value={data.subject}
-                          onChange={handleInputChange}
-                          required
-                        /> */}
-                  <select
-                    id='subject'
-                    name='subject'
-                    value={data.subject}
-                    onChange={handleInputChange}
-                    className='appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline'
-                    required
-                  >
-                    <option className='' value={""}>subject</option>
-
-                    {
-                      allPackage.map((el, index) => {
-                        return (
-
-                          <option className='' value={el.title} key={el.title + index}>{el.title}</option>
-                        )
-                      })
-                    }
-
-                  </select>
-                </div>
-                <div className="mb-4">
-                  <label className="block text-navy-600 text-sm font-bold mb-2" htmlFor="message">
-                    Message
-                  </label>
-                  <textarea
-                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700"
-                    id="message"
-                    rows={5}
-                    placeholder="Enter your message here..."
-                    name="message"
-                    value={data.message}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-
-              </div>
-
-
->>>>>>> Stashed changes
               <div className="flex items-center justify-between">
                 <button
                   className="bg-navy-400 hover:bg-navy-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

@@ -5,37 +5,38 @@ import MiniCalendar from "../../../components/calendar/MiniCalendar";
 import WeeklyRevenue from "./components/WeeklyRevenue";
 import TotalSpent from "./components/TotalSpent";
 import { IoMdGift } from "react-icons/io";
-<<<<<<< Updated upstream
-import {  columnsDataComplex } from "./variables/columnsData";
-import { IoMdCloudDownload } from "react-icons/io";
-=======
 import { MdOutlineCloudDownload } from "react-icons/md";
 import { columnsDataComplex } from "./variables/columnsData";
->>>>>>> Stashed changes
 import Widget from "../../../components/widget/Widget";
 import CheckTable from "./components/CheckTable";
 import DailyTraffic from "./components/DailyTraffic";
 import tableDataComplex from "./variables/tableDataComplex.json";
 
 const Dashboard = () => {
-
   const [allPackage, setAllPackage] = useState([]);
   const [activePackageCount, setActivePackageCount] = useState(0);
   const [inactivePackageCount, setInactivePackageCount] = useState(0);
+
   const fetchAllPackage = async () => {
     try {
       const response = await fetch(summaryApi.allPackage.url);
       const dataResponse = await response.json();
-      console.log("package data", dataResponse);
+
+      console.log("Package data:", dataResponse);
+
       const packages = dataResponse?.data || [];
       setAllPackage(packages);
-      // Calculate counts
 
-      const activePackages = packages.filter(pack => pack?.status === STATUS.Active);
-      const inactivePackages = packages.filter(pack => pack?.status !== STATUS.Active);
+      // Calculate counts
+      const activePackages = packages.filter(
+        (pack) => pack?.status === STATUS.Active
+      );
+      const inactivePackages = packages.filter(
+        (pack) => pack?.status !== STATUS.Active
+      );
+
       setActivePackageCount(activePackages.length);
       setInactivePackageCount(inactivePackages.length);
-
     } catch (error) {
       console.error("Error fetching all packages:", error);
     }
@@ -45,83 +46,51 @@ const Dashboard = () => {
     fetchAllPackage();
   }, []);
 
-
   return (
     <div>
-
-      {/* Card widget */}
-
+      {/* Card Widgets */}
       <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-6">
         <Widget
           icon={<IoMdGift className="h-7 w-7 text-yellow-500" />}
-          title={"Offers"}
+          title="Offers"
           subtitle={allPackage.length}
         />
         <Widget
           icon={<IoMdGift className="h-6 w-6 text-green-500" />}
-          title={"Active Offers"}
+          title="Active Offers"
           subtitle={activePackageCount}
         />
         <Widget
           icon={<IoMdGift className="h-7 w-7 text-red-500" />}
-          title={"Deactivated Offers"}
+          title="Deactivated Offers"
           subtitle={inactivePackageCount}
         />
-<<<<<<< Updated upstream
-         <Widget
-          icon={<IoMdCloudDownload className="h-10 w-10" />}
-=======
         <Widget
           icon={<MdOutlineCloudDownload className="h-10 w-10" />}
->>>>>>> Stashed changes
-          title={"Download PDF"}
-          subtitle={""}
+          title="Download PDF"
+          subtitle=""
         />
-        {/*<Widget
-          icon={<MdBarChart className="h-7 w-7" />}
-          title={"New Tasks"}
-          subtitle={"145"}
-        />
-        <Widget
-          icon={<IoMdHome className="h-6 w-6" />}
-          title={"Total Projects"}
-          subtitle={"$2433"}
-        /> */}
       </div>
 
       {/* Charts */}
-
       <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
         <TotalSpent />
         <WeeklyRevenue />
       </div>
 
       {/* Tables & Charts */}
-
       <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
         {/* Check Table */}
-        <CheckTable
-          columnsData={columnsDataComplex}
-          tableData={tableDataComplex}
-        />
+        <CheckTable columnsData={columnsDataComplex} tableData={tableDataComplex} />
 
-        {/* Traffic chart & Calendar */}
-
+        {/* Traffic Chart & Calendar */}
         <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
           <DailyTraffic />
-          {/* <PieChartCard /> */}
           <div className="grid grid-cols-1 rounded-[10px]">
             <MiniCalendar />
           </div>
         </div>
-
-        {/* <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
-          <div className="grid grid-cols-1 rounded-[20px]">
-            <MiniCalendar />
-          </div>
-        </div> */}
       </div>
-
     </div>
   );
 };
